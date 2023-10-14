@@ -21,6 +21,7 @@
 
 #welcome-world>img {
     height: auto;
+    width: auto;
     display: inline-block;
     
     max-width: 30%;
@@ -88,9 +89,9 @@
 
 .image-wrap {
     width: 250px;
-    height: 250px;
+    height: 150px;
     display: inline-block;
-    border-radius: 50%;
+    border-radius: 5%;
     overflow: hidden;
     position: relative;
     text-align: center;

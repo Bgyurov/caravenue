@@ -1,7 +1,7 @@
 #create-page,
 #edit-page {
     position: relative;
-    width: 800px;
+    width: 1000px;
     height: auto;
     border-radius: 20px;
     padding: 40px;
@@ -22,16 +22,22 @@ input[type="text"] {
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
     border: 2px solid orange
 }
-select {
-  
+select { 
     padding-left: 20px;
     height: 50px;
     width: 100%;
     border: 2px solid orange;
-
     margin-top: 10px;
     font-size: 24px;
     border-radius: 50px;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust alignment as needed */
+}
+.form-group {
+    margin: 5px;
 }
 
 textarea {

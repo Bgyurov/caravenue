@@ -21,6 +21,7 @@
                 <div id="user">
                     <a href="#">Public Ad</a>
                     <a href="#">Logout</a>
+                    <a href="#">Profile</a>
                 </div>
                 <!-- Guest users -->
                 <div id="guest">
@@ -42,6 +43,7 @@
                 <h3>CarAvenue!</h3>
             </div>
             <img src="./images/hero.png" alt="hero">
+            <br>
 
             <div id="home-page">
                 <h1>Latest Ad</h1>
@@ -49,7 +51,7 @@
                 <!-- Display div: with information about every game (if any) -->
                 <div class="game">
                     <div class="image-wrap">
-                        <img src="./images/CoverFire.png">
+                        <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg">
                     </div>
                     <h3>BMW 750</h3>
                     <h4>2020</h4>
@@ -60,7 +62,7 @@
                 </div>
                 <div class="game">
                     <div class="image-wrap">
-                        <img src="./images/ZombieLang.png">
+                        <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg">
                     </div>
                     <h3>AUDI A7</h3>
                     <h4>2017</h4>
@@ -71,7 +73,7 @@
                 </div>
                 <div class="game">
                     <div class="image-wrap">
-                        <img src="./images/MineCraft.png">
+                        <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg">
                     </div>
                     <h3>Mercedes S class </h3>
                     <h4>2023</h4>
@@ -308,30 +310,54 @@
                     <label for="modification">Modification:</label>
                     <input type="text" id="modification" name="modification" placeholder="Enter modification...">
 
-                    
-                    <label for="etype">Engine Type:</label>
-                    <select name="etype" id="etype">
-                        <option selected value></option>
+                    <div class="row">
+                        <div class="form-group">
+                        <label for="etype">Engine Type:</label>
+                        <select name="etype" id="etype">
+                            <option selected value></option>
+    
+                            <option value="benzin">Бензин</option>
+                            <option value="dizel">Дизел</option>
+                            <option value="hybrid">Хибрид</option>
+                            <option value="electric">Електрически</option>
+                            <option value="puig hybrid">Puig-in хибрид</option>
+    
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="etype">Transmision:</label>
+                          <select name="etype" id="etype">
+                            <option selected value></option>
+    
+                              <option value="manual">Ръчна</option>
+                              <option value="automatic">Автоматична</option>
+                              <option value="semiAutomatic">Полуавтоматична</option>
+                              <option value="electric">Електрически</option>
+                              <option value="puig hybrid">Puig-in хибрид</option>
+      
+                            </select>
+                            <div class="form-group">
+                                <label for="etype">Euro Category:</label>
+                        <select name="ecategory" id="ecategory">
+                            <option selected value></option>
+    
+                            <option value="EURO 1">EURO 1</option>
+                            <option value="EURO 2">EURO 2</option>
+                            <option value="EURO 3">EURO 3</option>
+                            <option value="EURO 4">EURO 4</option>
+                            <option value="EURO 5">EURO 5</option>
+                            <option value="EURO 6">EURO 6</option>
 
-                        <option value="benzin">Бензин</option>
-                        <option value="dizel">Дизел</option>
-                        <option value="hybrid">Хибрид</option>
-                        <option value="electric">Електрически</option>
-                        <option value="puig hybrid">Puig-in хибрид</option>
-
-                      </select>
-
-                      <label for="etype">Transmision:</label>
-                      <select name="etype" id="etype">
-                        <option selected value></option>
-
-                          <option value="manual">Ръчна</option>
-                          <option value="automatic">Автоматична</option>
-                          <option value="semiAutomatic">Полуавтоматична</option>
-                          <option value="electric">Електрически</option>
-                          <option value="puig hybrid">Puig-in хибрид</option>
-  
-                        </select>
+    
+                          </select>
+                            </div>
+                          
+                            
+                            
+                        
+                    </div>
+                    <label for="hppower">Mileage [km]:</label>
+                    <input type="number" id="hppower" name="hppower" min="1">
 
                     <label for="hppower">Power [h.p.]:</label>
                     <input type="number" id="hppower" name="hppower" min="1" placeholder="1">
@@ -341,6 +367,24 @@
 
                     <label for="game-img">Image:</label>
                     <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo...">
+                    <div class="row">
+                        <div class="form-group">
+                        <label for="hppower">Price:</label>
+                        <input type="number" id="hppower" name="hppower" min="1" >
+                        </div>
+                        <div class="form-group">
+                        <label for="currency">Currency:</label>
+                        <select name="currency" id="currency">
+                          <option selected value></option>
+                            <option value="bgn">Лв(BGN)</option>
+                            <option value="eur">€(ЕUR)</option>
+                            <option value="usd">$(USD)</option>
+                         
+                          </select>
+                          </div>
+
+                    </div>
+                    
 
                     <label for="contactphone">Contact phone:</label>
                     <input type="tel" id="contactphone" name="contactphone" >
@@ -529,30 +573,51 @@
                     <label for="modification">Modification:</label>
                     <input type="text" id="modification" name="modification" placeholder="Enter modification...">
 
-                    
-                    <label for="etype">Engine Type:</label>
-                    <select name="etype" id="etype">
-                        <option selected value></option>
+                    <div class="row">
+                        <div class="form-group">
+                        <label for="etype">Engine Type:</label>
+                        <select name="etype" id="etype">
+                            <option selected value></option>
+    
+                            <option value="benzin">Бензин</option>
+                            <option value="dizel">Дизел</option>
+                            <option value="hybrid">Хибрид</option>
+                            <option value="electric">Електрически</option>
+                            <option value="puig hybrid">Puig-in хибрид</option>
+    
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="etype">Transmision:</label>
+                          <select name="etype" id="etype">
+                            <option selected value></option>
+    
+                              <option value="manual">Ръчна</option>
+                              <option value="automatic">Автоматична</option>
+                              <option value="semiAutomatic">Полуавтоматична</option>
+                              <option value="electric">Електрически</option>
+                              <option value="puig hybrid">Puig-in хибрид</option>
+      
+                            </select>
+                            <div class="form-group">
+                                <label for="etype">Euro Category:</label>
+                        <select name="ecategory" id="ecategory">
+                            <option selected value></option>
+    
+                            <option value="EURO 1">EURO 1</option>
+                            <option value="EURO 2">EURO 2</option>
+                            <option value="EURO 3">EURO 3</option>
+                            <option value="EURO 4">EURO 4</option>
+                            <option value="EURO 5">EURO 5</option>
+                            <option value="EURO 6">EURO 6</option>
 
-                        <option value="benzin">Бензин</option>
-                        <option value="dizel">Дизел</option>
-                        <option value="hybrid">Хибрид</option>
-                        <option value="electric">Електрически</option>
-                        <option value="puig hybrid">Puig-in хибрид</option>
-
-                      </select>
-
-                      <label for="etype">Transmision:</label>
-                      <select name="etype" id="etype">
-                        <option selected value></option>
-
-                          <option value="manual">Ръчна</option>
-                          <option value="automatic">Автоматична</option>
-                          <option value="semiAutomatic">Полуавтоматична</option>
-                          <option value="electric">Електрически</option>
-                          <option value="puig hybrid">Puig-in хибрид</option>
-  
-                        </select>
+    
+                          </select>
+                            </div>
+            
+                    </div>
+                    <label for="hppower">Mileage [km]:</label>
+                    <input type="number" id="hppower" name="hppower" min="1">
 
                     <label for="hppower">Power [h.p.]:</label>
                     <input type="number" id="hppower" name="hppower" min="1" placeholder="1">
@@ -562,6 +627,24 @@
 
                     <label for="game-img">Image:</label>
                     <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo...">
+                    <div class="row">
+                        <div class="form-group">
+                        <label for="hppower">Price:</label>
+                        <input type="number" id="hppower" name="hppower" min="1" >
+                        </div>
+                        <div class="form-group">
+                        <label for="currency">Currency:</label>
+                        <select name="currency" id="currency">
+                          <option selected value></option>
+                            <option value="bgn">Лв(BGN)</option>
+                            <option value="eur">€(ЕUR)</option>
+                            <option value="usd">$(USD)</option>
+                         
+                          </select>
+                          </div>
+
+                    </div>
+                    
 
                     <label for="contactphone">Contact phone:</label>
                     <input type="tel" id="contactphone" name="contactphone" >
@@ -581,14 +664,18 @@
                 <div class="vehicle-header">
                     <img class="vehicle-img" src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg" />
                     <h1>BMW 750LI</h1>
-                    <span class="etypes">Engine Type: Hybrid</span>
-                    <span class="transmision">Transmision: Automatic</span>
-                    <span class="power">Power: 435[h.p]</span>
-                    <span class="date">Date of manufacture: 20/09/2023</span>
+                    <span class="specs">Engine Type: Hybrid</span>
+                    <span class="specs">Transmision: Automatic</span>
+                    <span class="specs">Power: 435[h.p]</span>
+                    <span class="specs">Euro category: EURO 4</span>
 
+                    <span class="specs">Date of manufacture: 20/09/2023</span>
 
+                    
+                    
+                    
                 </div>
-
+                
                 <p class="text">
                     Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work
                     with an Orc to find a weapon everyone is prepared to kill for. Set in a world where fantasy
@@ -596,18 +683,19 @@
                     to work with an Orc to find a weapon everyone is prepared to kill for.
                 </p>
                 <span class="phone">Contact owner: 088272141</span>
-
+                
                 <!-- Bonus ( for Guests and Users ) -->
                 <div class="details-comments">
                     <h2>Comments:</h2>
                     <ul>
                         <!-- list all comments for current game (If any) -->
                         <li class="comment">
-                            <p>Content: I rate this one quite highly.</p>
+                            <p>Content: The price is good.</p>
                         </li>
                         <li class="comment">
-                            <p>Content: The best game.</p>
+                            <p>Content: Bad engine .</p>
                         </li>
+                        
                     </ul>
                     <!-- Display paragraph: If there are no games in the database -->
                     <p class="no-comment">No comments.</p>
@@ -617,8 +705,10 @@
                 <div class="buttons">
                     <a href="#" class="button">Edit</a>
                     <a href="#" class="button">Delete</a>
-                    <a href="#" class="button">View ad</a>
-
+                    <a href="#" class="vote-up">Favorite</a>
+                    
+                    <p class="thanks-for-vote">You are already watching this offer </p>
+                    
                 </div>
             </div>
 
@@ -636,37 +726,49 @@
 
         <!-- Catalogue -->
         <section id="catalog-page">
-            <h1>All Games</h1>
+            <h1>All Offers</h1>
             <!-- Display div: with information about every game (if any) -->
-            <div class="allGames">
-                <div class="allGames-info">
-                    <img src="./images/avatar-1.jpg">
-                    <h6>Action</h6>
-                    <h2>Cover Fire</h2>
+            <div class="offer">
+                <div class="offer-info">
+                    <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg">
+                    <h6>BMW 750 LI</h6>
+                    <h2>145 000$</h2>
+                    <h6>34000km</h6>
+
                     <a href="#" class="details-button">Details</a>
                 </div>
 
             </div>
-            <div class="allGames">
-                <div class="allGames-info">
-                    <img src="./images/avatar-1.jpg">
-                    <h6>Action</h6>
-                    <h2>Zombie lang</h2>
-                    <a href="#" class="details-button">Details</a>
-                </div>
-
-            </div>
-            <div class="allGames">
-                <div class="allGames-info">
-                    <img src="./images/avatar-1.jpg">
-                    <h6>Action</h6>
-                    <h2>MineCraft</h2>
-                    <a href="#" class="details-button">Details</a>
-                </div>
-            </div>
+          
 
             <!-- Display paragraph: If there is no games  -->
-            <h3 class="no-articles">No articles yet</h3>
+            <h3 class="no-articles">No offers yet</h3>
+        </section>
+
+           <!-- Search page -->
+           <section id="search-page">
+            <h1>Search</h1>
+            <h2>Serch by name</h2>
+            <form action="/" method="GET">
+                <input type="text" class="search" name="search" placeholder="Search..." >
+                <input type="submit" value="search">
+        </form>
+            <!-- Display div: with information about every game (if any) -->
+            <div class="offer">
+                <div class="offer-info">
+                    <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg">
+                    <h6>BMW 750 LI</h6>
+                    <h2>145 000$</h2>
+                    <h6>34000km</h6>
+
+                    <a href="#" class="details-button">Details</a>
+                </div>
+
+            </div>
+          
+
+            <!-- Display paragraph: If there is no games  -->
+            <h3 class="no-articles">Sorry, we couldn't find any results matching your search criteria</h3>
         </section>
     </div>
 </body>
