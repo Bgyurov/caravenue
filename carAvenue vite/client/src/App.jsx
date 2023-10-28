@@ -1,0 +1,54 @@
+import { useState,useEffect } from 'react'
+import { Routes, Route,useNavigate } from 'react-router-dom'
+
+
+import * as adsService from './services/adsService'
+
+import { Navigation } from './components/Navigation/Navigation'
+import { Hero } from './components/Hero/Hero'
+import { Login } from './components/Login/Login'
+import {Register} from './components/Register/Register.jsx'
+import {CreateAd} from './components/CreateAd/CreateAd.jsx'
+import {Catalog} from './components/Catalog/Catalog.jsx'
+import { Search } from './components/Search/Search.jsx'
+import { AdDetails } from './components/AdDetails/AdDetails.jsx'
+function App() {
+    const navigate = useNavigate()
+    const [ads, setAds] = useState([]);
+
+    useEffect(() => {
+        adsService.getAll()
+            .then(result => {
+                setAds(result)
+            })
+    }, []);
+
+    const onCreateAdSubmit = async (data) =>{
+        const newAd = await adsService.create(data)
+        //add ad to state
+        setAds(state=>[...state],newAd)
+        //redirect page
+        navigate('/catalog')
+    }
+
+    return (
+        <>
+
+            <Navigation />
+            {/*<!--Home Page-->*/}
+            <main id='main-content'>
+                <Routes>
+                    <Route path='/' element={<Hero/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/register' element={<Register/>}/>
+                    <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
+                    <Route path='/catalog' element={<Catalog ads={ads}/>}/>
+                    <Route path='/search' element={<Search/>}/>
+                    <Route path='/catalog/:adId' element={<AdDetails />} />
+                </Routes>    
+            </main>
+        </>
+    )
+}
+
+export default App
