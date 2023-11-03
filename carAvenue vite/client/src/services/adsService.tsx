@@ -7,6 +7,12 @@ export const getAll = async () => {
     const ads  = Object.values(result)
     return ads
 }
+export const getLastThree = async () => {
+    const result = await request.get(baseUrl)
+    const ads  = Object.values(result)
+    const lastThreeAds = ads.slice(-3)
+    return lastThreeAds
+}
 
 export const getOne = async (adId) => {
     const result = await request.get(`${baseUrl}/${adId}`)

@@ -15,7 +15,7 @@ import { AdDetails } from './components/AdDetails/AdDetails.jsx'
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
-
+    const [heroAds , setHeroAds] = useState([])
     useEffect(() => {
         adsService.getAll()
             .then(result => {
@@ -23,10 +23,18 @@ function App() {
             })
     }, []);
 
+    useEffect(() => {
+        adsService.getLastThree()
+            .then(result => {
+                setHeroAds(result)
+            })
+    }, []);
+
     const onCreateAdSubmit = async (data) =>{
         const newAd = await adsService.create(data)
         //add ad to state
-        setAds(state=>[...state],newAd)
+        setAds(state=>[...state,newAd])
+        setHeroAds(state=>[...state,newAd])
         //redirect page
         navigate('/catalog')
     }
@@ -38,7 +46,7 @@ function App() {
             {/*<!--Home Page-->*/}
             <main id='main-content'>
                 <Routes>
-                    <Route path='/' element={<Hero/>}/>
+                    <Route path='/' element={<Hero heroAds={heroAds}/>}/>
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
