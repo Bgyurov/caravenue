@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom"
 import * as adService from '../../services/adsService'
 import { useEffect, useState } from "react"
-export const AdDetails = () => {
+export const AdDetails = ({
+    onDeleteAdSubmit
+}) => {
+
     const { adId } = useParams()
     const [ad, setAd] = useState({})
 
@@ -11,6 +14,11 @@ export const AdDetails = () => {
                 setAd(result)
             })
     }, [adId])
+
+    const onDelete = async () => {
+        onDeleteAdSubmit(adId)
+        
+    }
     return (
 
 
@@ -20,7 +28,7 @@ export const AdDetails = () => {
 
                 <div className="vehicle-header">
                     <img className="vehicle-img" src={ad.imageUrl} />
-                    <h1>{ad.car} {ad.brand} {ad.modification}</h1>
+                    <h1>{ad.car} {ad.model} {ad.modification}</h1>
                     <span className="specs">Engine Type: {ad.etype}</span>
                     <span className="specs">Transmision: {ad.transmition}</span>
                     <span className="specs">Power: {ad.hppower}[h.p]</span>
@@ -57,9 +65,9 @@ export const AdDetails = () => {
 
                 {/*                                                                 <!-- Edit/Delete buttons ( Only for creator of this game )  -->
 */}                                                                <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
-                    <a href="#" className="vote-up">Favorite</a>
+                    <button href="#" className="button">Edit</button>
+                    <button onClick={onDelete} className="button">Delete</button>
+                    <button href="#" className="vote-up">Favorite</button>
 
                     <p className="thanks-for-vote">You are already watching this offer </p>
 

@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react'
-import { Routes, Route,useNavigate } from 'react-router-dom'
+import { Routes, Route,useNavigate ,useParams} from 'react-router-dom'
 
 
 import * as adsService from './services/adsService'
@@ -38,6 +38,13 @@ function App() {
         //redirect page
         navigate('/catalog')
     }
+    const onDeleteAdSubmit = async (adId) => {
+        await adsService.remove(adId)
+        setAds(state => state.filter(ad => ad._id !== adId))
+        setHeroAds(state => state.filter(ad => ad._id !== adId))
+        navigate('/catalog')
+        
+    }
 
     return (
         <>
@@ -52,7 +59,9 @@ function App() {
                     <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
                     <Route path='/catalog' element={<Catalog ads={ads}/>}/>
                     <Route path='/search' element={<Search/>}/>
-                    <Route path='/catalog/:adId' element={<AdDetails />} />
+                    <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
+                   
+
                 </Routes>    
             </main>
         </>

@@ -24,3 +24,7 @@ export const create = async (adData) => {
 
     return result
 }
+export const remove = async (adId) => {
+    const result = await request.del(`${baseUrl}/${adId}`)
+    return result
+}
