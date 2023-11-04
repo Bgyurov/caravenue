@@ -56,6 +56,15 @@
     background-color: #393D3F;
     border: 1px solid rgba(218, 181, 181, 0.829);
 }
+.price {
+    display: inline-block;
+    margin-top: 15px;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #08506e;
+    border: 1px solid rgba(100, 210, 218, 0.829);
+}
 
 .phone{
     display: inline-block;

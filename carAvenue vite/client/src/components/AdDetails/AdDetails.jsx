@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 import * as adService from '../../services/adsService'
 import { useEffect, useState } from "react"
+import { currencySetter } from "../../services/Convertor"
+
 export const AdDetails = ({
     onDeleteAdSubmit
 }) => {
@@ -19,6 +21,8 @@ export const AdDetails = ({
         onDeleteAdSubmit(adId)
         
     }
+  
+    
     return (
 
 
@@ -33,8 +37,10 @@ export const AdDetails = ({
                     <span className="specs">Transmision: {ad.transmition}</span>
                     <span className="specs">Power: {ad.hppower}[h.p]</span>
                     <span className="specs">Euro category: {ad.ecategory}</span>
-
                     <span className="specs">Date of manufacture: {ad.manufacturedate}</span>
+                    <br></br>
+                    <span className="price">Price: {ad.price} {currencySetter(ad.currency)}</span>
+
 
 
 
