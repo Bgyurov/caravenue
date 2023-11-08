@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react'
 import { Routes, Route,useNavigate ,useParams} from 'react-router-dom'
-
+import {AuthContext} from './contexts/AuthContext'
 
 import * as adsService from './services/adsService'
 
@@ -16,6 +16,7 @@ function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
     const [heroAds , setHeroAds] = useState([])
+    const [auth,setAuth] = useState ({})
     useEffect(() => {
         adsService.getAll()
             .then(result => {
@@ -46,15 +47,22 @@ function App() {
         
     }
 
+    const onLoginSubmit = async (e) => {
+        e.preventDefault()
+        console.log(Object.fromEntries(new FormData(e.target)))
+    }
+
     return (
         <>
+    <AuthContext.Provider value={{onLoginSubmit}}>
 
+   
             <Navigation />
             {/*<!--Home Page-->*/}
             <main id='main-content'>
                 <Routes>
                     <Route path='/' element={<Hero heroAds={heroAds}/>}/>
-                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/login' element={<Login />}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
                     <Route path='/catalog' element={<Catalog ads={ads}/>}/>
@@ -64,6 +72,7 @@ function App() {
 
                 </Routes>    
             </main>
+            </AuthContext.Provider>
         </>
     )
 }
