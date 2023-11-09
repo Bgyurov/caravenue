@@ -58,9 +58,26 @@ function App() {
         }
        
     }
+    const onRegisterSubmit = async (values) => {
+        const {confirmPass, ...registerData} = values
+        if(confirmPass !== registerData.password){
+            return 
+            //todo error
+        }
+        try {
+            const result = await AuthService.register(registerData)
+
+            setAuth(result)
+            navigate('/')
+        } catch (error) {
+             //TODO Error
+             console.log(error.message)
+        }
+    }
 
     const context = {
         onLoginSubmit,
+        onRegisterSubmit,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
