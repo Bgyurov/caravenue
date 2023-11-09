@@ -3,7 +3,7 @@ import { Routes, Route,useNavigate ,useParams} from 'react-router-dom'
 import {AuthContext} from './contexts/AuthContext'
 
 import * as adsService from './services/adsService'
-
+import * as AuthService from './services/authService'
 import { Navigation } from './components/Navigation/Navigation'
 import { Hero } from './components/Hero/Hero'
 import { Login } from './components/Login/Login'
@@ -48,12 +48,29 @@ function App() {
     }
 
     const onLoginSubmit = async (data) => {
-       console.log(data)
+        try {
+            const result = await AuthService.login(data)
+            setAuth(result) 
+            navigate('/')
+        } catch (error) {
+            //TODO Error
+            console.log(error.message)
+        }
+       
+    }
+
+    const context = {
+        onLoginSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken,
+        
     }
 
     return (
         <>
-    <AuthContext.Provider value={{onLoginSubmit}}>
+    <AuthContext.Provider value={context}>
 
    
             <Navigation />
