@@ -27,15 +27,18 @@ export const adsServiceFactory = (token) => {
 
     return result
 }
- const remove = async (adId) => {
-    const result = await request.delete(`${baseUrl}/${adId}`)
+ const remove =  (adId) => {
+    const result =  request.delete(`${baseUrl}/${adId}`)
     return result
 }
+const edit = async (adId,adData) => request.put(`${baseUrl}/${adId}`,adData)
+
 return{
     getAll,
     getLastThree,
     getOne,
     create,
     remove,
+    edit,
 }
 }

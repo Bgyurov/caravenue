@@ -15,6 +15,7 @@ import {CreateAd} from './components/CreateAd/CreateAd.jsx'
 import {Catalog} from './components/Catalog/Catalog.jsx'
 import { Search } from './components/Search/Search.jsx'
 import { AdDetails } from './components/AdDetails/AdDetails.jsx'
+import { EditAd } from './components/EditAd/EditAd.jsx'
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
@@ -86,6 +87,11 @@ function App() {
 
         setAuth({})
     }
+    const onAdEditSubmit = async (values) => {
+       const result =  await adsService.edit(values._id,values)
+       setAds(state=> state.map(x => x._id === values._id ? result : x))
+            navigate(`/catalog/${values._id}`)
+    }
 
     const context = {
         onLoginSubmit,
@@ -116,6 +122,8 @@ function App() {
                     <Route path='/catalog' element={<Catalog ads={ads}/>}/>
                     <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
+                    <Route path='/catalog/:adId/edit' element={<EditAd onAdEditSubmit={onAdEditSubmit} />} />
+
                    
 
                 </Routes>    

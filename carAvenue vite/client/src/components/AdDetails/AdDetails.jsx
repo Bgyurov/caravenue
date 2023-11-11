@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams,Link } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState } from "react"
 import { currencySetter } from "../../services/Convertor"
@@ -75,7 +75,7 @@ export const AdDetails = ({
                 <div className="buttons">
                 {isOwner && (
                     <>
-                       <button href="#" className="button">Edit</button>
+                       <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
                         <button onClick={onDelete} className="button">Delete</button>
                     </>
                         )}
