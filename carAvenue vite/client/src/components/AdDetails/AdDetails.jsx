@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom"
-import * as adService from '../../services/adsService'
+import {adsServiceFactory} from '../../services/adsService'
 import { useEffect, useState } from "react"
 import { currencySetter } from "../../services/Convertor"
+import { useService } from "../../hooks/useService"
 
 export const AdDetails = ({
     onDeleteAdSubmit
@@ -9,7 +10,7 @@ export const AdDetails = ({
 
     const { adId } = useParams()
     const [ad, setAd] = useState({})
-
+    const adService = useService(adsServiceFactory)
     useEffect(() => {
         adService.getOne(adId)
             .then(result => {

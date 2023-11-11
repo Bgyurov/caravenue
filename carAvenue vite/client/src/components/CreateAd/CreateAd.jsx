@@ -1,9 +1,8 @@
 import { useState } from "react"
-
+import { useForm } from "../../hooks/useForm"
 export const CreateAd = ({
     onCreateAdSubmit,
 }) =>{
-    const [values,setValues] = useState({
         car : '',
         model: '',
         modification : '',
@@ -20,25 +19,18 @@ export const CreateAd = ({
         description: ''
     })
 
-    const onChangeHandler = (e) => {
-        setValues(state => ({...state, [e.target.name]: e.target.value}))
-    }
 
-    const onSubmit =(e)=>{
-        e.preventDefault()
-        onCreateAdSubmit(values)
-    }
 
     return (
         <section id="create-page" className="auth">
-        <form id="create" onSubmit={onSubmit}>
+        <form id="create" method='post' onSubmit={onSubmit}>
             <div className="container">
 
                 <h1>Public your ad</h1>
                 <h2>Best way to sell your car</h2>
 
                 <label htmlFor="car">Brand:</label>
-                <select name="car" id="car" required  value={values.car} onChange={onChangeHandler} >
+                <select name="car" id="car" required  value={values.car} onChange={changeHandler} >
                    
                     <optgroup label="A">
                         <option value="Acura">Acura</option>
@@ -201,15 +193,15 @@ export const CreateAd = ({
                 </select>
 
                 <label htmlFor="model">Model:</label>
-                <input value={values.model} onChange={onChangeHandler} type="text" id="model" name="model" placeholder="Enter model..." required />
+                <input value={values.model} onChange={changeHandler} type="text" id="model" name="model" placeholder="Enter model..." required />
 
                 <label htmlFor="modification">Modification:</label>
-                <input value={values.modification}  onChange={onChangeHandler}  type="text" id="modification" name="modification" placeholder="Enter modification..."required />
+                <input value={values.modification}  onChange={changeHandler}  type="text" id="modification" name="modification" placeholder="Enter modification..."required />
 
                 <div className="row">
                     <div className="form-group">
                         <label htmlFor="etype">Engine Type:</label>
-                        <select name="etype" id="etype"value={values.etype}  onChange={onChangeHandler} required>
+                        <select name="etype" id="etype"value={values.etype}  onChange={changeHandler} required>
                         
                             <option></option>
                             <option value="benzin">Бензин</option>
@@ -222,7 +214,7 @@ export const CreateAd = ({
                     </div>
                     <div className="form-group">
                         <label htmlFor="transmition">Transmision:</label>
-                        <select name="transmition" id="transmition" value={values.transmition}  onChange={onChangeHandler }required>
+                        <select name="transmition" id="transmition" value={values.transmition}  onChange={changeHandler }required>
                             
                             <option></option>
                             <option value="manual">Ръчна</option>
@@ -234,7 +226,7 @@ export const CreateAd = ({
                         </select>
                         <div className="form-group">
                             <label htmlFor="etype">Euro Category:</label>
-                            <select name="ecategory" id="ecategory" value={values.ecategory}  onChange={onChangeHandler} required>
+                            <select name="ecategory" id="ecategory" value={values.ecategory}  onChange={changeHandler} required>
                                 
 
                                 <option value="EURO 1">EURO 1</option>
@@ -253,24 +245,24 @@ export const CreateAd = ({
 
                     </div>
                     <label htmlFor="milleage">Mileage [km]:</label>
-                    <input value={values.milleage}  onChange={onChangeHandler}  type="number" id="milleage" name="milleage" min="1" required/>
+                    <input value={values.milleage}  onChange={changeHandler}  type="number" id="milleage" name="milleage" min="1" required/>
 
                     <label htmlFor="hppower">Power [h.p.]:</label>
-                    <input value={values.hppower}  onChange={onChangeHandler}  type="number" id="hppower" name="hppower" min="1" placeholder="1"required />
+                    <input value={values.hppower}  onChange={changeHandler}  type="number" id="hppower" name="hppower" min="1" placeholder="1"required />
 
                     <label htmlFor="manufacturedate">Date of manufacture:</label>
-                    <input value={values.manufacturedate}  onChange={onChangeHandler}  type="date" id="manufacturedate" name="manufacturedate" required/>
+                    <input value={values.manufacturedate}  onChange={changeHandler}  type="date" id="manufacturedate" name="manufacturedate" required/>
 
                     <label htmlFor="game-img">Image:</label>
-                    <input value={values.imageUrl} onChange={onChangeHandler}   type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..."required />
+                    <input value={values.imageUrl} onChange={changeHandler}   type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..."required />
                     <div className="row">
                         <div className="form-group">
                             <label htmlFor="price">Price:</label>
-                            <input type="number" onChange={onChangeHandler}  id="price" name="price" min="1" required/>
+                            <input type="number" onChange={changeHandler}  id="price" name="price" min="1" required/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="currency">Currency:</label>
-                            <select name="currency" id="currency"  value={values.currency}  onChange={onChangeHandler} required>
+                            <select name="currency" id="currency"  value={values.currency}  onChange={changeHandler} required>
                                 <option value=""></option>
                                 <option value="bgn">Лв(BGN)</option>
                                 <option value="eur">€(ЕUR)</option>
@@ -283,10 +275,10 @@ export const CreateAd = ({
 
 
                     <label htmlFor="contactphone">Contact phone:</label>
-                    <input value={values.contactphone}  onChange={onChangeHandler}   type="tel" id="contactphone" name="contactphone" required />
+                    <input value={values.contactphone}  onChange={changeHandler}   type="tel" id="contactphone" name="contactphone" required />
 
                     <label htmlFor="description">Description:</label>
-                    <textarea name="description" id="description" value={values.description}  onChange={onChangeHandler} required ></textarea>
+                    <textarea name="description" id="description" value={values.description}  onChange={changeHandler} required ></textarea>
                     <input className="btn submit" type="submit" value="List your ad" />
                 </div>
             </div>
