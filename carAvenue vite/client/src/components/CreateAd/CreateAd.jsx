@@ -3,6 +3,7 @@ import { useForm } from "../../hooks/useForm"
 export const CreateAd = ({
     onCreateAdSubmit,
 }) =>{
+    const {values,changeHandler,onSubmit} = useForm({
         car : '',
         model: '',
         modification : '',
@@ -17,7 +18,7 @@ export const CreateAd = ({
         currency: '',
         contactphone: '',
         description: ''
-    })
+    },onCreateAdSubmit)
 
 
 
