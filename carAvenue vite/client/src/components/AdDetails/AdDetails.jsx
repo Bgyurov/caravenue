@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom"
-import {adsServiceFactory} from '../../services/adsService'
+import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState } from "react"
 import { currencySetter } from "../../services/Convertor"
 import { useService } from "../../hooks/useService"
-
+import { AuthContext } from "../../contexts/AuthContext"
+import { useContext } from "react"
 export const AdDetails = ({
     onDeleteAdSubmit
 }) => {
-
+    const { userId } = useContext(AuthContext)
     const { adId } = useParams()
     const [ad, setAd] = useState({})
     const adService = useService(adsServiceFactory)
@@ -20,10 +21,12 @@ export const AdDetails = ({
 
     const onDelete = async () => {
         onDeleteAdSubmit(adId)
-        
     }
-  
-    
+
+    const isOwner = ad._ownerId === userId
+
+
+
     return (
 
 
@@ -66,20 +69,29 @@ export const AdDetails = ({
                         </li>
 
                     </ul>
-                    {/*                                                                   <!-- Display paragraph: If there are no games in the database -->
-*/}                                                                  <p className="no-comment">No comments.</p>
+                    <p className="no-comment">No comments.</p>
                 </div>
 
-                {/*                                                                 <!-- Edit/Delete buttons ( Only for creator of this game )  -->
-*/}                                                                <div className="buttons">
-                    <button href="#" className="button">Edit</button>
-                    <button onClick={onDelete} className="button">Delete</button>
+                <div className="buttons">
+                {isOwner && (
+                    <>
+                       <button href="#" className="button">Edit</button>
+                        <button onClick={onDelete} className="button">Delete</button>
+                    </>
+                        )}
+
+                {!isOwner && (
+                    <>
                     <button href="#" className="vote-up">Favorite</button>
-
                     <p className="thanks-for-vote">You are already watching this offer </p>
-
+                    
+                    </>
+                )}
                 </div>
-            </div>
+               </div>
+
+
+            
 
             {/* <!-- Bonus -->*/}
             {/*<!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) -->*/}                                                            <article className="create-comment">
