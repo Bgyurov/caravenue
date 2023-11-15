@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useEffect } from "react"
 import { useService } from "../../hooks/useService"
 import { adsServiceFactory } from "../../services/adsService"
+import "./create-edit.css"
 export const EditAd = ({
     onAdEditSubmit,
 }) => {

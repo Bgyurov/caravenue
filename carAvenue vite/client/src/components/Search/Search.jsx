@@ -1,3 +1,6 @@
+import '../Search/search.css'
+
+
 export const Search = ()=>{
     return (
         <section id="search-page">

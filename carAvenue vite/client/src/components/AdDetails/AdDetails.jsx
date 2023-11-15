@@ -5,6 +5,7 @@ import { currencySetter } from "../../services/Convertor"
 import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
+import './details.css'
 export const AdDetails = ({
     onDeleteAdSubmit
 }) => {
@@ -56,21 +57,7 @@ export const AdDetails = ({
                 </p>
                 <span className="phone">Contact owner:  {ad.contactphone}</span>
 
-                {/*                                                                 <!-- Bonus ( for Guests and Users ) -->
-*/}                                                                <div className="details-comments">
-                    <h2>Comments:</h2>
-                    <ul>
-                        {/*                                                                     <!-- list all comments for current game (If any) -->
-*/}                                                                    <li className="comment">
-                            <p>Content: The price is good.</p>
-                        </li>
-                        <li className="comment">
-                            <p>Content: Bad engine .</p>
-                        </li>
-
-                    </ul>
-                    <p className="no-comment">No comments.</p>
-                </div>
+              
 
                 <div className="buttons">
                 {isOwner && (
@@ -93,14 +80,7 @@ export const AdDetails = ({
 
             
 
-            {/* <!-- Bonus -->*/}
-            {/*<!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) -->*/}                                                            <article className="create-comment">
-                <label>Add new comment:</label>
-                <form className="form">
-                    <textarea name="comment" placeholder="Comment......"></textarea>
-                    <input className="btn submit" type="submit" value="Add Comment" />
-                </form>
-            </article>
+          
 
         </section>
     )

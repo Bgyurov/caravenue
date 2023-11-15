@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useForm } from "../../hooks/useForm"
+import './create-edit.css'
 export const CreateAd = ({
     onCreateAdSubmit,
 }) =>{

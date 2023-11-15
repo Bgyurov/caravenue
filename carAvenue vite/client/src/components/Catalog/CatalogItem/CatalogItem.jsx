@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { currencySetter } from "../../../services/Convertor"
-
 export const CatalogItem = ({
         car ,
         model,

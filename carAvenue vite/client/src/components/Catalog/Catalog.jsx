@@ -1,5 +1,5 @@
 import { CatalogItem } from "./CatalogItem/CatalogItem.jsx"
-
+import '../Catalog/all-ads.css'
 export const Catalog = ({ads})=>{
     return (
         <section id="catalog-page">

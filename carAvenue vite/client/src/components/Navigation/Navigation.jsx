@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/AuthContext.tsx"
+import './navigation.css'
 export function Navigation(){
     const {isAuthenticated,userEmail} = useContext(AuthContext)
     return(

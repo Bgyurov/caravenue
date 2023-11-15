@@ -1,6 +1,6 @@
 import heroPhoto from '../../assets/hero.png'
 import { HeroItem } from './HeroItem/HeroItem.jsx'
-
+import './welcome.css'
 
 export const Hero =({
     heroAds,
