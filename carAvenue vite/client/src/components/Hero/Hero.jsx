@@ -1,4 +1,4 @@
-import heroPhoto from '../../assets/hero.png'
+import heroPhoto from '../../assets/sold-label-sign-concept-on-transparent-background-free-png.webp'
 import { HeroItem } from './HeroItem/HeroItem.jsx'
 import './welcome.css'
 

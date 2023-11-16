@@ -2,7 +2,7 @@ import { AuthContext } from "../../contexts/AuthContext.tsx"
 import { useContext } from "react"
 import { useForm } from "../../hooks/useForm.tsx"
 import { Link } from "react-router-dom"
-
+import '../Login/Login.css'
 export function Login(){
     const { onLoginSubmit } = useContext(AuthContext);
     const { values, changeHandler, onSubmit } = useForm({
@@ -13,7 +13,7 @@ export function Login(){
         <section id="login-page" className="auth">
         <form id="login" method="POST" onSubmit={onSubmit}>
 
-            <div className="container">
+            <div className='container'>
 
                 <h1>Login</h1>
                 <label htmlFor="email">Email:</label>

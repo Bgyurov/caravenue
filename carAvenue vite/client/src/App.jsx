@@ -93,6 +93,8 @@ function App() {
             navigate(`/catalog/${values._id}`)
     }
 
+    
+
     const context = {
         onLoginSubmit,
         onRegisterSubmit,
@@ -110,7 +112,6 @@ function App() {
 
    
             <Navigation />
-            {/*<!--Home Page-->*/}
             <main id='main-content'>
                 <Routes>
                     <Route path='/' element={<Hero heroAds={heroAds}/>}/>
