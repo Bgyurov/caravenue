@@ -10,7 +10,7 @@ import './details.css'
 export const AdDetails = ({
     onDeleteAdSubmit
 }) => {
-    const { userId } = useContext(AuthContext)
+    const { userId,isAuthenticated } = useContext(AuthContext)
     const { adId } = useParams()
     const [ad, setAd] = useState({})
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
@@ -75,8 +75,8 @@ export const AdDetails = ({
                 <span className="phone">Телефон за връзка:  {ad.contactphone}</span>
 
               
-
-                <div className="buttons">
+                {isAuthenticated && (
+                     <div className="buttons">
                 {isOwner && (
                     <>
                        <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
@@ -92,10 +92,9 @@ export const AdDetails = ({
                     </>
                 )}
                 </div>
-               </div>
+                )}
+                              </div>
 
-
-            
 
           
 
