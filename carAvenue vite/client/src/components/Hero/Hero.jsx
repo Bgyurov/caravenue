@@ -5,8 +5,10 @@ import './welcome.css'
 export const Hero =({
     heroAds,
 }) =>{
+   
     return ( 
     <section id="welcome-world">
+
 
     <div className="welcome-message">
         <h2>Rev Up Your Dreams at </h2>

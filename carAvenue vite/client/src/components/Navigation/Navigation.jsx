@@ -5,7 +5,6 @@ import './navigation.css'
 
 export function Navigation(){
     const {isAuthenticated,userEmail} = useContext(AuthContext)
-    const userGreeting = userEmail.split('@')[0]
     
        return(
         <>
@@ -19,7 +18,6 @@ export function Navigation(){
             <div id="user">
                 <Link to="/create-ad">Public Ad</Link>
                 <Link to="/logout">Logout</Link>
-                <span>Welcome, {userGreeting}</span>
                 <Link to="#">Profile</Link>
             </div>
             )}
@@ -31,7 +29,18 @@ export function Navigation(){
             </div>
             )}
         </nav>
+        
         </div>
+        
+        {isAuthenticated && (
+        <div className="welcome-message">
+ <div class="welcome-box">
+        <h1>Welcome ,<span>{userEmail.split("@")[0]}</span> !</h1>
+        
+    </div>
+    </div>
+
+        )}
             </>
     )
 }

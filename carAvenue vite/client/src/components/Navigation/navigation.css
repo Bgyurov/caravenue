@@ -1,5 +1,5 @@
 body {
-    background-color:#4f5963c4;
+  background: linear-gradient(0.45turn, #3f87a6, #ebf8e1, #e38251);
     background-attachment: fixed;
     background-size: cover;
 }
@@ -26,12 +26,25 @@ body {
   font-size: 17px;
 }
 
-.topnav span {
+.topnav nav a:hover{
+  color: #e38251;
+  cursor: pointer;
+  
+}
+
+
+h1 {
+  color: #333;
+  margin: 0;
+}
+
+.welcome-box h1{
   color: #f2f2f2;
-  text-align: center;
-  padding: 44px 56px;
-  text-decoration: none;
-  font-size: 14px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.welcome-box h1 span{
+  color: #e38251;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
 }
   
   
