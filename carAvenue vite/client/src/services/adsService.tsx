@@ -33,6 +33,8 @@ export const adsServiceFactory = (token) => {
 }
 const edit = async (adId,adData) => request.put(`${baseUrl}/${adId}`,adData)
 
+const searchByName = async(search)=> request.get(`${baseUrl}?where=car%3D%22${search}%22`)
+
 return{
     getAll,
     getLastThree,
@@ -40,5 +42,6 @@ return{
     create,
     remove,
     edit,
+    searchByName,
 }
 }

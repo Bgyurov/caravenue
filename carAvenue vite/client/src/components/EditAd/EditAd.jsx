@@ -1,6 +1,6 @@
 import { useForm } from "../../hooks/useForm"
 import { useParams } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
 import { useService } from "../../hooks/useService"
 import { adsServiceFactory } from "../../services/adsService"
 import "./create-edit.css"
@@ -9,6 +9,8 @@ export const EditAd = ({
 }) => {
     const {adId} = useParams()
     const adService = useService(adsServiceFactory)
+    const [buttonForSecondPh, setButtonForSecondPh] = useState(true);
+    const [isClickedForSecondPh, setIsClickedForSecondPh] = useState(false);
     const {values,changeHandler,onSubmit, changeValues} = useForm({
         _id: '',
         car : '',
@@ -21,6 +23,7 @@ export const EditAd = ({
         milleage: '',
         manufacturedate: '',
         imageUrl: '',
+        imageUrl2: '',
         price: '',
         currency: '',
         contactphone: '',
@@ -33,6 +36,9 @@ export const EditAd = ({
             changeValues(result)
         })
     },[adId])
+
+   
+   
     return (
 
     <section id="edit-page" className="auth">
@@ -42,7 +48,7 @@ export const EditAd = ({
             <h1>Edit  ad</h1>
 
 
-            <label htmlFor="car">Brand:</label>
+            <label htmlFor="car">Марка:</label>
                 <select name="car" id="car" required  value={values.car} onChange={changeHandler} >
                    
                     <optgroup label="A">
@@ -205,15 +211,15 @@ export const EditAd = ({
 
                 </select>
 
-                <label htmlFor="model">Model:</label>
+                <label htmlFor="model">Модел:</label>
                 <input value={values.model} onChange={changeHandler} type="text" id="model" name="model" placeholder="Enter model..." required />
 
-                <label htmlFor="modification">Modification:</label>
+                <label htmlFor="modification">Модификация:</label>
                 <input value={values.modification}  onChange={changeHandler}  type="text" id="modification" name="modification" placeholder="Enter modification..."required />
 
                 <div className="row">
                     <div className="form-group">
-                        <label htmlFor="etype">Engine Type:</label>
+                        <label htmlFor="etype">Тип двигател:</label>
                         <select name="etype" id="etype"value={values.etype}  onChange={changeHandler} required>
                         
                             <option></option>
@@ -226,19 +232,18 @@ export const EditAd = ({
                         </select>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="transmition">Transmision:</label>
+                        <label htmlFor="transmition">Скоростна кутия:</label>
                         <select name="transmition" id="transmition" value={values.transmition}  onChange={changeHandler }required>
                             
                             <option></option>
                             <option value="manual">Ръчна</option>
                             <option value="automatic">Автоматична</option>
                             <option value="semiAutomatic">Полуавтоматична</option>
-                            <option value="electric">Електрически</option>
-                            <option value="puig hybrid">Puig-in хибрид</option>
+                           
 
                         </select>
                         <div className="form-group">
-                            <label htmlFor="etype">Euro Category:</label>
+                            <label htmlFor="etype">Евростандарт:</label>
                             <select name="ecategory" id="ecategory" value={values.ecategory}  onChange={changeHandler} required>
                                 
 
@@ -257,24 +262,30 @@ export const EditAd = ({
 
 
                     </div>
-                    <label htmlFor="milleage">Mileage [km]:</label>
+                    <label htmlFor="milleage">Пробег [km]:</label>
                     <input value={values.milleage}  onChange={changeHandler}  type="number" id="milleage" name="milleage" min="1" required/>
 
-                    <label htmlFor="hppower">Power [h.p.]:</label>
+                    <label htmlFor="hppower">Мощност [h.p.]:</label>
                     <input value={values.hppower}  onChange={changeHandler}  type="number" id="hppower" name="hppower" min="1" placeholder="1"required />
 
-                    <label htmlFor="manufacturedate">Date of manufacture:</label>
+                    <label htmlFor="manufacturedate">Година на производство:</label>
                     <input value={values.manufacturedate}  onChange={changeHandler}  type="date" id="manufacturedate" name="manufacturedate" required/>
 
-                    <label htmlFor="game-img">Image:</label>
+                    <label htmlFor="game-img">Снимка:</label>
                     <input value={values.imageUrl} onChange={changeHandler}   type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..."required />
+                    
+                    
+                    <label htmlFor="game-img">Снимка 2:</label>
+                    <input value={values.imageUrl2} onChange={changeHandler}   type="text" id="imageUrl2" name="imageUrl2" placeholder="Upload a second photo..." />
+                    
+                  
                     <div className="row">
                         <div className="form-group">
-                            <label htmlFor="price">Price:</label>
-                            <input type="number" onChange={changeHandler}  id="price" name="price" min="1" required/>
+                            <label htmlFor="price">Цена:</label>
+                            <input type="number" onChange={changeHandler}  value={values.price} id="price" name="price" min="1" required/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="currency">Currency:</label>
+                            <label htmlFor="currency">Ваулта:</label>
                             <select name="currency" id="currency"  value={values.currency}  onChange={changeHandler} required>
                                 <option value=""></option>
                                 <option value="bgn">Лв(BGN)</option>
@@ -283,16 +294,16 @@ export const EditAd = ({
 
                             </select>
                         </div>
-
+                        
                     </div>
 
 
-                    <label htmlFor="contactphone">Contact phone:</label>
+                    <label htmlFor="contactphone">Телефон за връзка:</label>
                     <input value={values.contactphone}  onChange={changeHandler}   type="tel" id="contactphone" name="contactphone" required />
 
-                    <label htmlFor="description">Description:</label>
+                    <label htmlFor="description">Описание:</label>
                     <textarea name="description" id="description" value={values.description}  onChange={changeHandler} required ></textarea>
-                    <input className="btn submit" type="submit" value="List your ad" />
+                    <input className="btn submit" type="submit" value="Edit your ad" />
             </div>
         </div>
     </form>

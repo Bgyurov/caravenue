@@ -1,31 +1,32 @@
 import '../Search/search.css'
+import { SearchItem } from './SearchItem/SearchItem.jsx'
+import { useForm } from '../../hooks/useForm'
 
-
-export const Search = ()=>{
+export const Search = ({searchFormSubmit, ads})=>{
+    const {values,changeHandler,onSubmit} = useForm({
+        search: ''
+    },searchFormSubmit)
     return (
         <section id="search-page">
         <h1>Search</h1>
         <h2>Serch by name</h2>
-        <form action="/" method="GET">
-            <input type="text" className="search" name="search" placeholder="Search..." />
-            <input type="submit" value="search" />
+        <form method="GET" onSubmit={onSubmit}>
+            <input type="text" className="search" name="search" placeholder="Search..." value={values.search} onChange={changeHandler} />
+            <input type="submit" value="Search" />
         </form>
-        {/*<!-- Display div: with information about every game (if any) -->*/}
-        <div className="offer">
-            <div className="offer-info">
-                <img src="https://www.topgear.com/sites/default/files/images/cars-road-test/2019/08/4d2352886115db6b2662e488e9aebb1a/p90348944_highres.jpg" />
-                <h6>BMW 750 LI</h6>
-                <h2>145 000$</h2>
-                <h6>34000km</h6>
+      
+        {ads.map(x => 
+    <SearchItem key={x._id} {...x} />
+    )}
 
-                <a href="#" className="details-button">Details</a>
-            </div>
+        {ads.length === 0 && (
+            
+            <>
+            <h3 className="no-articles">Sorry, we couldn't find any results matching your search criteria</h3>
+            </>
+        )}
 
-        </div>
 
-
-        {/* <!-- Display paragraph: If there is no games  -->*/}
-        <h3 className="no-articles">Sorry, we couldn't find any results matching your search criteria</h3>
     </section>
     )
 }

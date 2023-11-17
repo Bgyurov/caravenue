@@ -1,7 +1,7 @@
 import { useParams,Link } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState } from "react"
-import { currencyConverter,engineTypeConverter,transmitionConverter } from "../../services/convertor.tsx"
+import { currencyConverter,engineTypeConverter,transmitionConverter,yearConverter } from "../../services/convertor.tsx"
 
 import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"
@@ -33,11 +33,12 @@ export const AdDetails = ({
     if(ad.imageUrl2){
         photos.push(ad.imageUrl2)
     }
+    console.log(photos)
     useEffect(() => {
       // Set up an interval to change the photo every 3 seconds (adjust as needed)
       const intervalId = setInterval(() => {
         setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
-      }, 1000);
+      }, 5000);
   
       // Clear the interval when the component unmounts
       return () => clearInterval(intervalId);
@@ -56,9 +57,9 @@ export const AdDetails = ({
                     <h1>{ad.car} {ad.model} {ad.modification}</h1>
                     <span className="specs">Тип двигател: {engineTypeConverter(ad.etype)}</span>
                     <span className="specs">Скоростна кутия: {transmitionConverter(ad.transmition)}</span>
-                    <span className="specs">Мощност: {ad.hppower}[h.p]</span>
+                    <span className="specs">Мощност: {ad.hppower}[к.с]</span>
                     <span className="specs">Евростандарт: {ad.ecategory}</span>
-                    <span className="specs">Година на производство: {ad.manufacturedate}</span>
+                    <span className="specs">Година на производство(м/г): {yearConverter(ad.manufacturedate)}</span>
                     <br></br>
                     <span className="price">Цена: {ad.price} {currencyConverter(ad.currency)}</span>
 
@@ -79,7 +80,7 @@ export const AdDetails = ({
                 {isOwner && (
                     <>
                        <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
-                        <button onClick={onDelete} className="button">Delete</button>
+                        <Link to={`/catalog`} onClick={onDelete} className="button">Delete</Link>
                     </>
                         )}
 

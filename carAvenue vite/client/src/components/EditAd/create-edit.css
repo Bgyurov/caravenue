@@ -93,3 +93,30 @@ input[type='tel']{
     text-align: center;
     padding-bottom: 2rem;
 }
+button.addbtn {
+    background-color: #e38251; /* Green */
+    height: 35px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+button.addbtn:hover {
+    background-color: #7f340f; /* Green */
+}
+button.closeBtn {
+    background-color: #e38251; /* Green */
+    height: 30px;
+   
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+button.closeBtn:hover {
+    background-color: #7f340f; /* Green */
+}

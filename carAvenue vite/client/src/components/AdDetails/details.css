@@ -109,11 +109,7 @@
     background-color: #FCBF49;
     border: 1px solid rgba(218, 181, 181, 0.829);
 }
-.vote-up:hover {
-    background-color: #8A817C;
-    transition: 0.4s;
-   
-}
+
 
 .info-section>.text {
     margin-top: 30px;
@@ -132,17 +128,6 @@
     color: #545454;
 }
 
-.movie_social {
-    height: 10%;
-    padding-left: 15px;
-    padding-bottom: 20px;
-}
-
-.movie_social {
-    font-size: 1.6rem;
-    padding-top: 20px;
-    text-align: center;
-}
 
 .buttons {
     height: 10%;
@@ -154,10 +139,12 @@
 .button {
     height: 15%;
     background-color: #54557b;
-    padding: 14px;
+    padding: 14px ;
     margin-top: auto;
+    margin-right: 10px;
     font-size: 21px;
     color: rgb(255, 255, 255);
+    border-radius: 10%;
 }
 
 .button:hover {

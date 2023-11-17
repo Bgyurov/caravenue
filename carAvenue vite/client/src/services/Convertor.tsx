@@ -54,3 +54,11 @@ export const transmitionConverter = (transmition) => {
     }
     return transmition
 }
+
+export const yearConverter = (date) => {
+    if(date == undefined){
+        return date
+    }
+    let [year,month] = date.split('-')
+    return `${month}/${year}`
+}
