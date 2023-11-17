@@ -2,7 +2,7 @@ import '../Search/search.css'
 import { SearchItem } from './SearchItem/SearchItem.jsx'
 import { useForm } from '../../hooks/useForm'
 
-export const Search = ({searchFormSubmit, ads})=>{
+export const Search = ({searchFormSubmit,search})=>{
     const {values,changeHandler,onSubmit} = useForm({
         search: ''
     },searchFormSubmit)
@@ -14,12 +14,18 @@ export const Search = ({searchFormSubmit, ads})=>{
             <input type="text" className="search" name="search" placeholder="Search..." value={values.search} onChange={changeHandler} />
             <input type="submit" value="Search" />
         </form>
-      
-        {ads.map(x => 
+
+
+      {search && (
+        <>
+            {search.map(x => 
     <SearchItem key={x._id} {...x} />
     )}
+        </>
+    
+      )}
 
-        {ads.length === 0 && (
+        {search.length === 0 && (
             
             <>
             <h3 className="no-articles">Sorry, we couldn't find any results matching your search criteria</h3>

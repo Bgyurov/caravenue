@@ -26,6 +26,7 @@ const request = async (method, token, url, data) => {
         return {};
     }
     if (response.status === 404) {
+       
         return {};
     }
 
