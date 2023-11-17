@@ -8,7 +8,7 @@ export function Navigation(){
     
        return(
         <>
-        <div class="topnav">
+        <div className="topnav">
         <h1><Link className="home" to="/">CarAvenue</Link></h1>
         <nav>
             <Link to="/catalog">All cars</Link>
@@ -32,15 +32,15 @@ export function Navigation(){
         
         </div>
         
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
         <div className="welcome-message">
  <div class="welcome-box">
-        <h1>Welcome ,<span>{userEmail.split("@")[0]}</span> !</h1>
+        <h1>Welcome ,<span>{userEmail.split("@")[0]}</span>!</h1>
         
     </div>
     </div>
 
-        )}
+        )} */}
             </>
     )
 }

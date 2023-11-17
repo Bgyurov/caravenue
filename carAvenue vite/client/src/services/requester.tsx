@@ -25,6 +25,9 @@ const request = async (method, token, url, data) => {
     if (response.status === 204) {
         return {};
     }
+    if (response.status === 404) {
+        return {};
+    }
 
     const result = await response.json();
 

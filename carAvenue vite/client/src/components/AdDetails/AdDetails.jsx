@@ -1,7 +1,8 @@
 import { useParams,Link } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState } from "react"
-import { currencySetter } from "../../services/Convertor"
+import { currencyConverter,engineTypeConverter,transmitionConverter } from "../../services/convertor.tsx"
+
 import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
@@ -12,6 +13,7 @@ export const AdDetails = ({
     const { userId } = useContext(AuthContext)
     const { adId } = useParams()
     const [ad, setAd] = useState({})
+    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const adService = useService(adsServiceFactory)
     useEffect(() => {
         adService.getOne(adId)
@@ -25,7 +27,21 @@ export const AdDetails = ({
     }
 
     const isOwner = ad._ownerId === userId
+    let photos = []
 
+    photos.push(ad.imageUrl)
+    if(ad.imageUrl2){
+        photos.push(ad.imageUrl2)
+    }
+    useEffect(() => {
+      // Set up an interval to change the photo every 3 seconds (adjust as needed)
+      const intervalId = setInterval(() => {
+        setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+      }, 1000);
+  
+      // Clear the interval when the component unmounts
+      return () => clearInterval(intervalId);
+    }, [photos]);
 
 
     return (
@@ -36,15 +52,15 @@ export const AdDetails = ({
             <div className="info-section">
 
                 <div className="vehicle-header">
-                    <img className="vehicle-img" src={ad.imageUrl} />
+                    <img className="vehicle-img" src={photos[currentPhotoIndex]} />
                     <h1>{ad.car} {ad.model} {ad.modification}</h1>
-                    <span className="specs">Engine Type: {ad.etype}</span>
-                    <span className="specs">Transmision: {ad.transmition}</span>
-                    <span className="specs">Power: {ad.hppower}[h.p]</span>
-                    <span className="specs">Euro category: {ad.ecategory}</span>
-                    <span className="specs">Date of manufacture: {ad.manufacturedate}</span>
+                    <span className="specs">Тип двигател: {engineTypeConverter(ad.etype)}</span>
+                    <span className="specs">Скоростна кутия: {transmitionConverter(ad.transmition)}</span>
+                    <span className="specs">Мощност: {ad.hppower}[h.p]</span>
+                    <span className="specs">Евростандарт: {ad.ecategory}</span>
+                    <span className="specs">Година на производство: {ad.manufacturedate}</span>
                     <br></br>
-                    <span className="price">Price: {ad.price} {currencySetter(ad.currency)}</span>
+                    <span className="price">Цена: {ad.price} {currencyConverter(ad.currency)}</span>
 
 
 
@@ -55,7 +71,7 @@ export const AdDetails = ({
                 <p className="text">
                     {ad.description}
                 </p>
-                <span className="phone">Contact owner:  {ad.contactphone}</span>
+                <span className="phone">Телефон за връзка:  {ad.contactphone}</span>
 
               
 

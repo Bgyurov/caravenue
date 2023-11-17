@@ -40,10 +40,11 @@ h1 {
 
 .welcome-box h1{
   color: #f2f2f2;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:monospace;
 }
 .welcome-box h1 span{
-  color: #e38251;
+  color: red;
+  font-weight: bold;
   font-family:Verdana, Geneva, Tahoma, sans-serif
 }
   

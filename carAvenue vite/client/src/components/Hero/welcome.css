@@ -14,7 +14,7 @@
     z-index: 999;
     margin: 5% auto;
     left: 0;
-    top: 40%;
+    top: 100%;
     text-align: center;
     width: 30%;
 }
@@ -23,7 +23,6 @@
     height: 50%;
     width: 40%;
     display: inline-block;
-    
     max-width: 30%;
     margin-left: 10%;
     padding-left: auto;
@@ -33,20 +32,18 @@
     color: #ffffff;
     font-size: 300%;
     font-size: 55px;
-    line-height: 1;
     font-weight: 700;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: uppercase;
     text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.3);
-    font-family: "Agency FB";
+    font-family: cursive;
 }
 
 .welcome-message h3 {
     color: #ffffff;
-    font-size: 600%;
+    font-size: 500%;
     text-shadow: none;
-    line-height: 1;
     font-weight: 700;
     text-align: center;
     letter-spacing: normal;
@@ -54,7 +51,7 @@
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.3);
-    font-family: "Agency FB";
+    font-family: cursive;
 }
 
 #welcome-world>#home-page {

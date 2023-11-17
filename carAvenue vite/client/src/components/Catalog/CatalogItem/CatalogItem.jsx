@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { currencySetter } from "../../../services/Convertor"
+// import { currencyConverter } from "../../../services/convertor.tsx"
 export const CatalogItem = ({
         car ,
         model,
@@ -16,7 +16,7 @@ export const CatalogItem = ({
         <div className="offer-info">
             <img src={imageUrl} />
             <h6>{car} {model} {modification}</h6>
-            <h2>{price} {currencySetter(currency)}</h2>
+            {/* <h2>{price} {currencyConverter(currency)}</h2> */}
             <h6>{milleage}km</h6>
 
             <Link to={`/catalog/${_id}`} className="details-button">Details</Link>
