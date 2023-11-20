@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import { Routes, Route,useNavigate ,useParams} from 'react-router-dom'
 import {AuthContext} from './contexts/AuthContext'
-
+import { Alert,Snackbar } from '@mui/material';
 import {adsServiceFactory} from './services/adsService'
 
 import {authServiceFactory} from './services/authService'
@@ -22,7 +22,7 @@ function App() {
     const [heroAds , setHeroAds] = useState([])
     const [search, setSearch] = useState([])
     const [auth,setAuth] = useState ({})
-    
+    const [successMsg , setSuccessMsg] = useState(false)
 
     const adsService = adsServiceFactory(auth.accessToken)
     const authSevice = authServiceFactory(auth.accessToken)
@@ -46,8 +46,12 @@ function App() {
         setAds(state=>[...state,newAd])
         setHeroAds(state=>[...state,newAd])
         //redirect page
+        setSuccessMsg(true)
         navigate('/catalog')
     }
+    const handleCloseSuccessMsg = () => {
+        setSuccessMsg(false);
+      };
     const onDeleteAdSubmit = async (adId) => {
         await adsService.remove(adId)
         setAds(state => state.filter(ad => ad._id !== adId))
@@ -119,7 +123,7 @@ function App() {
         token: auth.accessToken,
         userEmail: auth.email,
         isAuthenticated: !!auth.accessToken,
-        
+                
     }
 
     return (
@@ -127,8 +131,18 @@ function App() {
     <AuthContext.Provider value={context}>
 
    
+         
+   
             <Navigation />
             <main id='main-content'>
+                <Snackbar
+                     open={successMsg} autoHideDuration={6000} onClose={handleCloseSuccessMsg}
+                >
+
+        <Alert onClose={handleCloseSuccessMsg} severity="success">
+          You succesfull add your ad . Good Luck!
+        </Alert>
+                </Snackbar>
                 <Routes>
                     <Route path='/' element={<Hero heroAds={heroAds}/>}/>
                     <Route path='/login' element={<Login />}/>
