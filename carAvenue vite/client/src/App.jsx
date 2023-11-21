@@ -20,7 +20,6 @@ function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
     const [heroAds , setHeroAds] = useState([])
-    const [search, setSearch] = useState([])
     const [auth,setAuth] = useState ({})
     const [successMsg , setSuccessMsg] = useState(false)
 
@@ -98,19 +97,7 @@ function App() {
        setAds(state=> state.map(x => x._id === values._id ? result : x))
             navigate(`/catalog/${values._id}`)
     }
-    const searchFormSubmit = async (values) =>{
-        
-        let searchWord = values.search
-        let convertWord = searchWord.charAt(0).toUpperCase() + searchWord.slice(1);
-        if(convertWord == ''){
-        const result = await adsService.getAll()
-        setSearch(result)
-        }else{
-            const result = await adsService.searchByName(convertWord)
-            setSearch(result)
 
-        }
-    }
  
 
     
@@ -151,7 +138,7 @@ function App() {
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
                     <Route path='/catalog' element={<Catalog ads={ads}/>}/>
-                    <Route path='/search' element={<Search searchFormSubmit={searchFormSubmit} search={search} />}/>
+                    <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
                     <Route path='/catalog/:adId/edit' element={<EditAd onAdEditSubmit={onAdEditSubmit} />} />
 

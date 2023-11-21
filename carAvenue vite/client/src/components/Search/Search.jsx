@@ -1,11 +1,38 @@
 import '../Search/search.css'
 import { SearchItem } from './SearchItem/SearchItem.jsx'
 import { useForm } from '../../hooks/useForm'
+import { useEffect, useState } from 'react'
+import { adsServiceFactory } from '../../services/adsService'
 
-export const Search = ({searchFormSubmit,search})=>{
+export const Search = () =>{
+    const [searchAds , setSearchAds] = useState([])
+
+   async function searchFormSubmit(e){
+ 
+        let searchWord = values.search
+        let convertWord = searchWord.charAt(0).toUpperCase() + searchWord.slice(1);
+        if(convertWord == ''){
+        const result = await adsService.getAll()
+        setSearchAds(result)
+        }else{
+            const result = await adsService.searchByName(convertWord)
+            setSearchAds(result)
+
+        }
+    }
+    
+    const adsService = adsServiceFactory()
     const {values,changeHandler,onSubmit} = useForm({
         search: ''
     },searchFormSubmit)
+
+    useEffect(() => {
+        adsService.getAll()
+            .then(result => {
+                setSearchAds(result)
+            })
+    }, [])
+   
     return (
         <section id="search-page">
         <h1>Search</h1>
@@ -16,16 +43,16 @@ export const Search = ({searchFormSubmit,search})=>{
         </form>
 
 
-      {search && (
+      {searchAds && (
         <>
-            {search.map(x => 
+            {searchAds.map(x => 
     <SearchItem key={x._id} {...x} />
     )}
         </>
     
       )}
 
-        {search.length === 0 && (
+        {searchAds.length === 0 && (
             
             <>
             <h3 className="no-articles">Sorry, we couldn't find any results matching your search criteria</h3>
