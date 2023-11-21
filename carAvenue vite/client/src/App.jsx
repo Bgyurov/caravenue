@@ -22,6 +22,7 @@ function App() {
     const [heroAds , setHeroAds] = useState([])
     const [auth,setAuth] = useState ({})
     const [successMsg , setSuccessMsg] = useState(false)
+    const [error, setError] = useState('')
 
     const adsService = adsServiceFactory(auth.accessToken)
     const authSevice = authServiceFactory(auth.accessToken)
@@ -48,8 +49,9 @@ function App() {
         setSuccessMsg(true)
         navigate('/catalog')
     }
-    const handleCloseSuccessMsg = () => {
+    const handleCloseMsg = () => {
         setSuccessMsg(false);
+        setError()
       };
     const onDeleteAdSubmit = async (adId) => {
         await adsService.remove(adId)
@@ -73,8 +75,10 @@ function App() {
     const onRegisterSubmit = async (values) => {
         const {confirmPass, ...registerData} = values
         if(confirmPass !== registerData.password){
-            return 
             //todo error
+            setError('Please ensure that the password and confirm password fields match')
+            
+            return 
         }
         try {
             const result = await authSevice.register(registerData)
@@ -123,13 +127,23 @@ function App() {
             <Navigation />
             <main id='main-content'>
                 <Snackbar
-                     open={successMsg} autoHideDuration={6000} onClose={handleCloseSuccessMsg}
+                     open={successMsg} autoHideDuration={6000} onClose={handleCloseMsg}
                 >
 
-        <Alert onClose={handleCloseSuccessMsg} severity="success">
+        <Alert onClose={handleCloseMsg} severity="success">
           You succesfull add your ad . Good Luck!
         </Alert>
                 </Snackbar>
+
+        <Snackbar 
+       
+        open={error} autoHideDuration={4500} onClose={handleCloseMsg}>
+
+        <Alert  onClose={handleCloseMsg} severity="error">
+          {error}
+        </Alert>
+        </Snackbar>
+        
                 <Routes>
                     <Route path='/' element={<Hero heroAds={heroAds}/>}/>
                     <Route path='/login' element={<Login />}/>

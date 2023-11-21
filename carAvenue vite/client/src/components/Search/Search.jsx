@@ -8,7 +8,7 @@ export const Search = () =>{
     const [searchAds , setSearchAds] = useState([])
 
    async function searchFormSubmit(e){
- 
+        
         let searchWord = values.search
         let convertWord = searchWord.charAt(0).toUpperCase() + searchWord.slice(1);
         if(convertWord == ''){
