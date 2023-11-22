@@ -16,6 +16,7 @@ import {Catalog} from './components/Catalog/Catalog.jsx'
 import { Search } from './components/Search/Search.jsx'
 import { AdDetails } from './components/AdDetails/AdDetails.jsx'
 import { EditAd } from './components/EditAd/EditAd.jsx'
+import Profile from './components/Profile/Profile.jsx';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
@@ -116,7 +117,7 @@ function App() {
 
  
 
-    
+  
 
     const context = {
         onLoginSubmit,
@@ -176,6 +177,7 @@ function App() {
                     <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
                     <Route path='/catalog/:adId/edit' element={<EditAd onAdEditSubmit={onAdEditSubmit} />} />
+                    <Route path='/profile/:profileId' element={<Profile/>}/>
 
                    
 

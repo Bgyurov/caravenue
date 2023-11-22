@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext.tsx"
 import './navigation.css'
 
 export function Navigation(){
-    const {isAuthenticated,userEmail} = useContext(AuthContext)
+    const {isAuthenticated,userId} = useContext(AuthContext)
     
        return(
         <>
@@ -18,7 +18,7 @@ export function Navigation(){
             <div id="user">
                 <Link to="/create-ad">Public Ad</Link>
                 <Link to="/logout">Logout</Link>
-                <Link to="#">Profile</Link>
+                <Link to={`/profile/${userId}`}>Profile</Link>
             </div>
             )}
             {/*<!-- Guest users -->*/}
