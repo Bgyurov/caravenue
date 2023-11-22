@@ -21,7 +21,7 @@ function App() {
     const [ads, setAds] = useState([]);
     const [heroAds , setHeroAds] = useState([])
     const [auth,setAuth] = useState ({})
-    const [successMsg , setSuccessMsg] = useState(false)
+    const [successMsg , setSuccessMsg] = useState('')
     const [error, setError] = useState('')
 
     const adsService = adsServiceFactory(auth.accessToken)
@@ -46,12 +46,12 @@ function App() {
         setAds(state=>[...state,newAd])
         setHeroAds(state=>[...state,newAd])
         //redirect page
-        setSuccessMsg(true)
+        setSuccessMsg('You succesfull add your ad . Good Luck!')
         navigate('/catalog')
     }
     const handleCloseMsg = () => {
-        setSuccessMsg(false);
-        setError()
+        setSuccessMsg('');
+        setError('')
       };
     const onDeleteAdSubmit = async (adId) => {
         await adsService.remove(adId)
@@ -66,20 +66,29 @@ function App() {
             const result = await authSevice.login(data)
             setAuth(result) 
             navigate('/')
+            setSuccessMsg('Welcome again!')
         } catch (error) {
             //TODO Error
-            console.log(error.message)
+            setError(error.message)
         }
        
     }
     const onRegisterSubmit = async (values) => {
-        const {confirmPass, ...registerData} = values
+        const {confirmPass ,...registerData} = values
         if(confirmPass !== registerData.password){
-            //todo error
+       
             setError('Please ensure that the password and confirm password fields match')
-            
             return 
         }
+        
+        if(registerData.password.length < 5){
+            setError('The password should be more than 5 symbols')
+            return
+        }
+       
+             
+        
+
         try {
             const result = await authSevice.register(registerData)
 
@@ -87,7 +96,10 @@ function App() {
             navigate('/')
         } catch (error) {
              //TODO Error
-             console.log(error.message)
+                 setError(error.message)
+            
+
+             
         }
     }
 
@@ -126,23 +138,32 @@ function App() {
    
             <Navigation />
             <main id='main-content'>
+                {successMsg && (
                 <Snackbar
-                     open={successMsg} autoHideDuration={6000} onClose={handleCloseMsg}
+                     open={successMsg}
+                      autoHideDuration={6000} 
+                      onClose={handleCloseMsg}
                 >
 
         <Alert onClose={handleCloseMsg} severity="success">
-          You succesfull add your ad . Good Luck!
+          {successMsg}
         </Alert>
                 </Snackbar>
 
-        <Snackbar 
-       
-        open={error} autoHideDuration={4500} onClose={handleCloseMsg}>
+                )}
+                {error && (
+        <Snackbar  
+        open={error} 
+        autoHideDuration={4500}
+         onClose={handleCloseMsg}>
 
         <Alert  onClose={handleCloseMsg} severity="error">
           {error}
         </Alert>
         </Snackbar>
+
+                )}
+
         
                 <Routes>
                     <Route path='/' element={<Hero heroAds={heroAds}/>}/>

@@ -29,6 +29,7 @@ const request = async (method, token, url, data) => {
        
         return {};
     }
+   
 
     const result = await response.json();
 
