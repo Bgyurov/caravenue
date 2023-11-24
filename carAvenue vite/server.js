@@ -1333,6 +1333,33 @@
         }
     };
     var seedData = {
+        ads: {
+          "43ee967c-1162-4f5e-a8d1-57dd15c6efb2": {
+                "_ownerId": "cba04e9a-8965-4343-9c07-003a046dc63b",
+                "car": "Chevrolet",
+                "model": "model",
+                "modification": "modification",
+                "etype": "dizel",
+                "transmition": "automatic",
+                "ecategory": "EURO 5",
+                "hppower": "1213",
+                "milleage": "12311",
+                "manufacturedate": "2023-11-10",
+                "imageUrl": "https://www.topgear.com/sites/default/files/images/cars-road-test/2021/06/8212a3301f62af3b7b7510854b573ce5/cupra.jpg",
+                "imageUrl2": "",
+                "price": "12311",
+                "currency": "usd",
+                "contactphone": "0888888",
+                "description": "adsadsads",
+                
+                "_createdOn": 1700846762074,
+                
+            }
+
+        },
+        favourites: {
+
+        },
         games: {
             "ff436770-76c5-40e2-b231-77409eda7a61": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",

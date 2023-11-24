@@ -11,28 +11,30 @@ import { useContext } from "react"
 import { profileServiceFactory } from '../../services/profileService';
 import { useService } from '../../hooks/useService';
 import { useParams } from 'react-router-dom';
-import { currencyConverter } from '../../services/Convertor'
 const Profile = () => {
   const { userEmail, userName } = useContext(AuthContext)
   const profileService = useService(profileServiceFactory)
   const { profileId } = useParams()
 
   const [adsByUser, setAdsByUser] = useState([])
+  const [favsByUser, setFavsByUser] = useState([])
   useEffect(() => {
     profileService.allAdsByUser(profileId)
       .then(result => {
         setAdsByUser(result)
       })
   }, [])
+  useEffect(() => {
+    profileService.favsByUser(profileId)
+      .then(result => {
+        setFavsByUser(result)
+      })
+  }, [])
 
 
 
 
-
-  const favorites = [
-    { id: 101, title: 'Favorite Ad 1', description: 'Description for Favorite Ad 1' },
-    { id: 102, title: 'Favorite Ad 2', description: 'Description for Favorite Ad 2' },
-  ];
+  
 
   const cardStyle = {
     marginBottom: '20px',
@@ -62,6 +64,7 @@ const Profile = () => {
 
 
   return (
+
     <div>
       <Card style={cardStyle}>
         <CardContent>
@@ -71,10 +74,10 @@ const Profile = () => {
         </CardContent>
       </Card>
 
-      <Card style={cardStyle}>
+       <Card style={cardStyle}>
         <CardContent>
           <Typography variant="h6">Ads from {userName}</Typography>
-          <List>
+          <List> 
             {adsByUser.map((ad) => (
               <ListItem className={listItemStyle}>
                 <ListItemAvatar className={avatar}>
@@ -99,16 +102,16 @@ const Profile = () => {
         <CardContent>
           <Typography variant="h6">Favorites of {userName}</Typography>
           <List>
-            {favorites.map((favorite) => (
+            {favsByUser.map((favorite) => (
               <ListItem key={favorite.id} style={listItemStyle}>
-                <ListItemText primary={favorite.title} secondary={favorite.description} />
+                <ListItemText primary={favorite.publication.car} secondary={favorite.publication.description} />
               </ListItem>
             ))}
           </List>
         </CardContent>
-      </Card>
+      </Card> 
     </div>
   );
-};
+}
 
 export default Profile;

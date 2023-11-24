@@ -6,10 +6,10 @@ export const Register = ()=>{
 
     const {onRegisterSubmit} = useContext(AuthContext)
     const {values,changeHandler,onSubmit} = useForm({
-        username: '',
+        username: '',  
         email: '',
         password: '',
-        confirmPass: ''
+        confirmPass: '',
     },onRegisterSubmit)
     return (
         <section id="register-page" className="content auth">

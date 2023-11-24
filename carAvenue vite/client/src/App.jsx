@@ -86,6 +86,7 @@ function App() {
             setError('The password should be more than 5 symbols')
             return
         }
+        
        
              
         

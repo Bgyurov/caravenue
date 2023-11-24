@@ -7,6 +7,7 @@ import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import './details.css'
+import { authServiceFactory } from "../../services/authService.tsx"
 export const AdDetails = ({
     onDeleteAdSubmit
 }) => {
@@ -16,18 +17,18 @@ export const AdDetails = ({
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const [isFavourite , setIsFavorite] = useState(false)
     const adService = useService(adsServiceFactory)
+    const authService = useService(authServiceFactory)
+    
     useEffect(() => {
-        adService.getOne(adId)
+        adService.getOneDetails(adId)
             .then(result => {
-                setAd(result)
+                setAd(result[0])
+               if(result[0].favourites.find((item)=> item._ownerId === userId)){
+                // setIsFavorite(true)
+               }
             })
     }, [adId])
-    useEffect(() => {
-        adService.getOne(adId)
-            .then(result => {
-                setAd(result)
-            })
-    }, [isFavourite])
+   
 
     const onDelete = async () => {
         onDeleteAdSubmit(adId)
@@ -50,19 +51,18 @@ export const AdDetails = ({
       return () => clearInterval(intervalId);
     }, [photos]);
    
+   console.log(ad)
    
-    // if(favouriteList != undefined){
-    //     let favourite = favouriteList.find(item => item.equals(userId))
-    //     console.log(favourite)
-    //     if(favourite){
-    //         setIsFavorite(true)
-    //     }
-
-    // }
+    
 
     async function handleFavClick(){
-        await adService.favorite(userId , adId)
-        console.log('inside')
+       let favs =  await adService.favorite2( adId)
+       
+       setAd((prevState) => ({
+        ...prevState,
+        favourites: { ...prevState.favourites, newestFavs },
+      }));
+       console.log(ad.favourites)
     }
 
 
@@ -110,8 +110,9 @@ export const AdDetails = ({
                     {!isFavourite && (
                         <button href={`/catalog/${ad._id}`} onClick={handleFavClick} className="vote-up">Favorite</button>
                     )}
-                    {isFavourite && (
 
+                    {isFavourite && (
+                        
                     <p className="thanks-for-vote">You are already watching this offer </p>
                     )}
                     
