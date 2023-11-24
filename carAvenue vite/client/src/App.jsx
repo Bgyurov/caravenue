@@ -178,7 +178,7 @@ function App() {
                     <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
                     <Route path='/catalog/:adId/edit' element={<EditAd onAdEditSubmit={onAdEditSubmit} />} />
-                    <Route path='/profile/:profileId' element={<Profile/>}/>
+                    <Route path='/profile/:profileId' element={<Profile />}/>
 
                    
 

@@ -24,7 +24,7 @@ export const AdDetails = ({
             .then(result => {
                 setAd(result[0])
                if(result[0].favourites.find((item)=> item._ownerId === userId)){
-                // setIsFavorite(true)
+                setIsFavorite(true)
                }
             })
     }, [adId])
@@ -60,9 +60,11 @@ export const AdDetails = ({
        
        setAd((prevState) => ({
         ...prevState,
-        favourites: { ...prevState.favourites, newestFavs },
+        favourites: { ...prevState.favourites, 1 : favs },
       }));
-       console.log(ad.favourites)
+     
+      setIsFavorite(true)
+       
     }
 
 

@@ -10,7 +10,8 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import { profileServiceFactory } from '../../services/profileService';
 import { useService } from '../../hooks/useService';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
+import {currencyConverter} from '../../services/Convertor'
 const Profile = () => {
   const { userEmail, userName } = useContext(AuthContext)
   const profileService = useService(profileServiceFactory)
@@ -32,6 +33,8 @@ const Profile = () => {
   }, [])
 
 
+console.log(adsByUser)
+console.log(profileId)
 
 
   
@@ -85,12 +88,9 @@ const Profile = () => {
                 </ListItemAvatar>
                 <ListItemText primary={`${ad.car} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
                 <Stack direction="row" spacing={1}>
-      <Button variant="outlined" startIcon={<DeleteIcon />}>
-        Delete
-      </Button>
-      <Button variant="contained" endIcon={<EditIcon />}>
-        Edit
-      </Button>
+     
+      <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
+
     </Stack>
               </ListItem>
             ))}
