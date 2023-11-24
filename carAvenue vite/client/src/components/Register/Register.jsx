@@ -6,6 +6,7 @@ export const Register = ()=>{
 
     const {onRegisterSubmit} = useContext(AuthContext)
     const {values,changeHandler,onSubmit} = useForm({
+        username: '',
         email: '',
         password: '',
         confirmPass: ''
@@ -17,8 +18,11 @@ export const Register = ()=>{
                 <div className="brand-logo"></div>
                 <h1>Register</h1>
 
+                <label htmlFor="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username..."  value={values.username} onChange={changeHandler}/>
+
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="maria@email.com"  value={values.email} onChange={changeHandler}/>
+                <input type="email" id="email" name="email" placeholder="Enter your email..."  value={values.email} onChange={changeHandler}/>
 
                 <label htmlFor="pass">Password:</label>
                 <input type="password" name="password" id="register-password" value={values.password} onChange={changeHandler} />

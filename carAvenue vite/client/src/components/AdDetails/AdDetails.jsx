@@ -14,6 +14,7 @@ export const AdDetails = ({
     const { adId } = useParams()
     const [ad, setAd] = useState({})
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+    const [isFavourite , setIsFavorite] = useState(false)
     const adService = useService(adsServiceFactory)
     useEffect(() => {
         adService.getOne(adId)
@@ -21,6 +22,12 @@ export const AdDetails = ({
                 setAd(result)
             })
     }, [adId])
+    useEffect(() => {
+        adService.getOne(adId)
+            .then(result => {
+                setAd(result)
+            })
+    }, [isFavourite])
 
     const onDelete = async () => {
         onDeleteAdSubmit(adId)
@@ -33,7 +40,6 @@ export const AdDetails = ({
     if(ad.imageUrl2){
         photos.push(ad.imageUrl2)
     }
-    console.log(photos)
     useEffect(() => {
       // Set up an interval to change the photo every 3 seconds (adjust as needed)
       const intervalId = setInterval(() => {
@@ -43,6 +49,21 @@ export const AdDetails = ({
       // Clear the interval when the component unmounts
       return () => clearInterval(intervalId);
     }, [photos]);
+   
+   
+    // if(favouriteList != undefined){
+    //     let favourite = favouriteList.find(item => item.equals(userId))
+    //     console.log(favourite)
+    //     if(favourite){
+    //         setIsFavorite(true)
+    //     }
+
+    // }
+
+    async function handleFavClick(){
+        await adService.favorite(userId , adId)
+        console.log('inside')
+    }
 
 
     return (
@@ -86,8 +107,13 @@ export const AdDetails = ({
 
                 {!isOwner && (
                     <>
-                    <button href="#" className="vote-up">Favorite</button>
+                    {!isFavourite && (
+                        <button href={`/catalog/${ad._id}`} onClick={handleFavClick} className="vote-up">Favorite</button>
+                    )}
+                    {isFavourite && (
+
                     <p className="thanks-for-vote">You are already watching this offer </p>
+                    )}
                     
                     </>
                 )}

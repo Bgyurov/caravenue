@@ -23,7 +23,8 @@ export const CreateAd = ({
         price: '',
         currency: '',
         contactphone: '',
-        description: ''
+        description: '',
+        favList: [],
     },onCreateAdSubmit)
 
    

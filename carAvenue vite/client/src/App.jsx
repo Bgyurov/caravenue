@@ -115,7 +115,6 @@ function App() {
             navigate(`/catalog/${values._id}`)
     }
 
- 
 
   
 
@@ -126,6 +125,7 @@ function App() {
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
+        userName: auth.username,
         isAuthenticated: !!auth.accessToken,
                 
     }
