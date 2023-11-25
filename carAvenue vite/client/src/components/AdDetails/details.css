@@ -160,4 +160,17 @@
     background-color: #6f5d9c;
     color: white;
 }
+.details {
+    height: 10%;
+    background-color: #FCBF49;
+    padding: 10px ;
+    font-size: 14px;
+    color: white;
+    border-radius: 5%;
+}
+
+.details:hover {
+   background-color: #805c15;
+    color: white;
+}
 

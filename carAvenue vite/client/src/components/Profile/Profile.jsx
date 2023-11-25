@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Avatar,  Card,  List, ListItem, ListItemText,ListItemAvatar ,Stack , CardActionArea,CardMedia } from '@mui/material';
+import { Avatar,Button , Card,  List, ListItem, ListItemText,ListItemAvatar ,Stack , CardActionArea,CardMedia } from '@mui/material';
 
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -80,6 +80,12 @@ console.log(favsByUser)
       <CardContent>
         <Typography variant="h6">Ads from {userName}</Typography>
         <List> 
+
+          {adsByUser.length == 0 && (
+        <Typography variant="h6">You have no active ads yet</Typography>
+
+          )}
+          
           {adsByUser.map((ad) => (
             <ListItem className={listItemStyle}>
               <ListItemAvatar className={avatar}>
@@ -100,6 +106,12 @@ console.log(favsByUser)
     <Card style={cardStyle}>
         <Typography variant="h6">Favorites of {userName}</Typography>
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+
+        {favsByUser.length == 0 && (
+          <Typography variant="h6">You haven't added any ads to your favorites.</Typography>
+
+          )}
+
           {favsByUser.map((favorite) => (
             
             <CardContent key={favorite.id}>
@@ -121,7 +133,7 @@ console.log(favsByUser)
 
                 </CardContent>
               </CardActionArea>
-              <Link to={`/catalog/${favorite.publicationId}`} className="button">Details</Link>
+              <Link to={`/catalog/${favorite.publicationId}`} className="details">Details</Link>
             </Card>
       </CardContent>
           ))}
