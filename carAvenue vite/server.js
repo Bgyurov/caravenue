@@ -1351,9 +1351,26 @@
                 "currency": "usd",
                 "contactphone": "0888888",
                 "description": "adsadsads",
-                
                 "_createdOn": 1700846762074,
-                
+            },
+            "f5c7487e-2912-42a8-ad46-c3658000c11c": {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "car": "Mercedes-Benz",
+                "model": "S class",
+                "modification": "550",
+                "etype": "benzin",
+                "transmition": "automatic",
+                "ecategory": "EURO 6",
+                "hppower": "350",
+                "milleage": "23000",
+                "manufacturedate": "2023-09-03",
+                "imageUrl": "https://car-images.bauersecure.com/pagefiles/74344/mercedes_s500_01.jpg",
+                "imageUrl2": "",
+                "price": "320000",
+                "currency": "bgn",
+                "contactphone": "0112345678",
+                "description": "Some info about S class....",
+                "_createdOn": 1700944341689,
             }
 
         },
