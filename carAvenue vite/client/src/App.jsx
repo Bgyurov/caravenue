@@ -17,11 +17,12 @@ import { Search } from './components/Search/Search.jsx'
 import { AdDetails } from './components/AdDetails/AdDetails.jsx'
 import { EditAd } from './components/EditAd/EditAd.jsx'
 import Profile from './components/Profile/Profile.jsx';
+import usePersistedState from './hooks/usePersistantState.js';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
     const [heroAds , setHeroAds] = useState([])
-    const [auth,setAuth] = useState ({})
+    const [auth,setAuth] = usePersistedState('auth',{})
     const [successMsg , setSuccessMsg] = useState('')
     const [error, setError] = useState('')
 
