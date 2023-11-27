@@ -23,8 +23,12 @@ export const AdDetails = ({
         adService.getOneDetails(adId)
             .then(result => {
                 setAd(result[0])
-               if(result[0].favourites.find((item)=> item._ownerId === userId)){
-                // setIsFavorite(true)
+                
+
+               if(result[0].favourites.find((item)=> item.publicationId === adId && item._ownerId === userId)){
+                setIsFavorite(true)
+               }else{
+                setIsFavorite(false)
                }
             })
     }, [adId])
@@ -51,7 +55,6 @@ export const AdDetails = ({
       return () => clearInterval(intervalId);
     }, [photos]);
    
-   console.log(ad)
    
     
 
@@ -60,9 +63,10 @@ export const AdDetails = ({
        
        setAd((prevState) => ({
         ...prevState,
-        favourites: { ...prevState.favourites, newestFavs },
+        favourites: { ...prevState.favourites, 1 : favs },
       }));
-       console.log(ad.favourites)
+      setIsFavorite(true)
+       
     }
 
 
