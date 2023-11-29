@@ -19,6 +19,7 @@ import { EditAd } from './components/EditAd/EditAd.jsx'
 import Profile from './components/Profile/Profile.jsx';
 import usePersistedState from './hooks/usePersistantState.js';
 import AuthGuard from './guards/AuthGuard.jsx';
+import NotFound from './components/NotFound/NotFound.jsx';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
@@ -182,7 +183,7 @@ function App() {
                     <Route path='/catalog/:adId/edit' element={<AuthGuard><EditAd onAdEditSubmit={onAdEditSubmit} /></AuthGuard>} />
                     <Route path='/profile/:profileId' element={<AuthGuard><Profile /></AuthGuard>}/>
 
-                   
+                    <Route path="*" element={<NotFound />} />
 
                 </Routes>    
             </main>
