@@ -18,6 +18,7 @@ import { AdDetails } from './components/AdDetails/AdDetails.jsx'
 import { EditAd } from './components/EditAd/EditAd.jsx'
 import Profile from './components/Profile/Profile.jsx';
 import usePersistedState from './hooks/usePersistantState.js';
+import AuthGuard from './guards/AuthGuard.jsx';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
@@ -174,12 +175,12 @@ function App() {
                     <Route path='/logout' element={<Logout />}/>
                     
                     <Route path='/register' element={<Register/>}/>
-                    <Route path='/create-ad' element={<CreateAd onCreateAdSubmit={onCreateAdSubmit}/>}/>
+                    <Route path='/create-ad' element={<AuthGuard><CreateAd onCreateAdSubmit={onCreateAdSubmit}/></AuthGuard>}/>
                     <Route path='/catalog' element={<Catalog ads={ads}/>}/>
                     <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
-                    <Route path='/catalog/:adId/edit' element={<EditAd onAdEditSubmit={onAdEditSubmit} />} />
-                    <Route path='/profile/:profileId' element={<Profile />}/>
+                    <Route path='/catalog/:adId/edit' element={<AuthGuard><EditAd onAdEditSubmit={onAdEditSubmit} /></AuthGuard>} />
+                    <Route path='/profile/:profileId' element={<AuthGuard><Profile /></AuthGuard>}/>
 
                    
 
