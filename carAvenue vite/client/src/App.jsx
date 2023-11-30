@@ -21,6 +21,7 @@ import usePersistedState from './hooks/usePersistantState.js';
 import AuthGuard from './guards/AuthGuard.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
+import ProfileGuard from './guards/ProfileGuard.jsx';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
@@ -183,7 +184,7 @@ function App() {
                     <Route path='/search' element={<Search/>}/>
                     <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
                     <Route path='/catalog/:adId/edit' element={<AuthGuard><EditAd onAdEditSubmit={onAdEditSubmit} /></AuthGuard>} />
-                    <Route path='/profile/:profileId' element={<AuthGuard><Profile /></AuthGuard>}/>
+                    <Route path='/profile/:profileId' element={<AuthGuard><ProfileGuard><Profile /></ProfileGuard></AuthGuard>}/>
 
                     <Route path="*" element={<NotFound />} />
 
