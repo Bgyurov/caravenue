@@ -1,7 +1,7 @@
 import { useParams,Link } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState } from "react"
-import { currencyConverter,engineTypeConverter,transmitionConverter,yearConverter } from "../../services/convertor.tsx"
+import { currencyConverter,engineTypeConverter,transmitionConverter,yearConverter } from "../../services/convertor.js"
 
 import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"

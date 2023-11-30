@@ -17,11 +17,11 @@ export function Login(){
 
                 <h1>Login</h1>
                 <label htmlFor="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Sokka@gmail.com" value={values.email}  onChange={changeHandler}/>
+                <input type="email" id="email" name="email" placeholder="Email..." value={values.email}  onChange={changeHandler}/>
 
                 <label htmlFor="login-pass">Password:</label>
-                <input type="password" id="login-password" name="password" value={values.password}  onChange={changeHandler} />
-                <input type="submit" className="btn submit" value="Login" />
+                <input type="password" id="login-password" placeholder="Password..." name="password" value={values.password}  onChange={changeHandler} />
+                <input type="submit" className="btn submit" value="Submit" />
                 <p className="field">
                     <span>If you don't have profile click <Link to="/register">here</Link></span>
                 </p>

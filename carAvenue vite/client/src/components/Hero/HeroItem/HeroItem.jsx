@@ -7,8 +7,8 @@ export const HeroItem = ({
     _id,
 }) => {
     return (
-        <div className="game">
-        <div className="image-wrap">
+        <div className="ad">
+        <div className="wrapper-img">
             <img src={imageUrl} />
         </div>
         <h3>{car} {model}</h3>

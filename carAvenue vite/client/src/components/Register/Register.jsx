@@ -25,10 +25,10 @@ export const Register = ()=>{
                 <input type="email" id="email" name="email" placeholder="Enter your email..."  value={values.email} onChange={changeHandler}/>
 
                 <label htmlFor="pass">Password:</label>
-                <input type="password" name="password" id="register-password" value={values.password} onChange={changeHandler} />
+                <input type="password" name="password" id="register-password" placeholder="Enter your pass..." value={values.password} onChange={changeHandler} />
 
                 <label htmlFor="con-pass">Confirm Password:</label>
-                <input type="password" name="confirmPass" id="confirm-password"  value={values.confirmPass} onChange={changeHandler}/>
+                <input type="password" name="confirmPass" id="confirm-password" placeholder="Confirm password" value={values.confirmPass} onChange={changeHandler}/>
 
                 <input className="btn submit" type="submit" value="Register" />
 

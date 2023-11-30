@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { currencyConverter } from "../../../services/convertor.tsx"
+import { currencyConverter } from "../../../services/convertor.js"
 export const SearchItem = ({
     car ,
     model,

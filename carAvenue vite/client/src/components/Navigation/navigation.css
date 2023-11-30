@@ -5,7 +5,7 @@ body {
 }
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #605b5b;
 }
 
 .topnav nav a {
@@ -25,10 +25,16 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
+.topnav  h1:hover {
+  color: #e38251;
+  cursor: pointer;
+  text-shadow: #FC0 0 1px;
+}
 
 .topnav nav a:hover{
   color: #e38251;
   cursor: pointer;
+  text-shadow: #FC0 0 1px;
   
 }
 
