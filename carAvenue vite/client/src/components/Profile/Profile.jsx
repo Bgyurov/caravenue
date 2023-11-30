@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react';
 
 import { Avatar,Button , Card,  List, ListItem, ListItemText,ListItemAvatar ,Stack , CardActionArea,CardMedia } from '@mui/material';
-
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
 import profilePic from '../../assets/R.png'
 import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import { profileServiceFactory } from '../../services/profileService';
 import { useService } from '../../hooks/useService';
 import { useParams,Link } from 'react-router-dom';
-import {currencyConverter} from '../../services/Convertor'
+import {currencyConverter} from '../../services/convertor.js'
 const Profile = () => {
   const { userEmail, userName } = useContext(AuthContext)
   const profileService = useService(profileServiceFactory)
   const { profileId } = useParams()
-
   const [adsByUser, setAdsByUser] = useState([])
   const [favsByUser, setFavsByUser] = useState([])
   useEffect(() => {
@@ -62,7 +59,7 @@ const Profile = () => {
   
 
  
-console.log(favsByUser)
+
 
 
   return (
@@ -87,14 +84,14 @@ console.log(favsByUser)
           )}
           
           {adsByUser.map((ad) => (
-            <ListItem className={listItemStyle}>
+            <ListItem key={ad._id} className={listItemStyle}>
               <ListItemAvatar className={avatar}>
                 <Avatar alt={ad.car} src={ad.imageUrl} />
               </ListItemAvatar>
               <ListItemText primary={`${ad.car} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
               <Stack direction="row" spacing={1}>
    
-    <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
+    <Link to={`/catalog/${ad._id}/edit`} className='button'>Edit</Link>
 
   </Stack>
             </ListItem>
@@ -114,7 +111,7 @@ console.log(favsByUser)
 
           {favsByUser.map((favorite) => (
             
-            <CardContent key={favorite.id}>
+            <CardContent key={favorite._id}>
               <Card  sx={{ maxWidth: 345 }} style={{ marginRight: '10px', marginBottom: '10px' }}>
               <CardActionArea>
                 <CardMedia

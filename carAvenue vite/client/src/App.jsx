@@ -20,13 +20,14 @@ import Profile from './components/Profile/Profile.jsx';
 import usePersistedState from './hooks/usePersistantState.js';
 import AuthGuard from './guards/AuthGuard.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
+import { Footer } from './components/Footer/Footer.jsx';
 function App() {
     const navigate = useNavigate()
     const [ads, setAds] = useState([]);
     const [heroAds , setHeroAds] = useState([])
     const [auth,setAuth] = usePersistedState('auth',{})
-    const [successMsg , setSuccessMsg] = useState('')
-    const [error, setError] = useState('')
+    const [successMsg , setSuccessMsg] = useState(false)
+    const [error, setError] = useState()
 
     const adsService = adsServiceFactory(auth.accessToken)
     const authSevice = authServiceFactory(auth.accessToken)
@@ -99,8 +100,8 @@ function App() {
 
             setAuth(result)
             navigate('/')
+            setSuccessMsg(`Успешна регистрация , Добре дошли!`)
         } catch (error) {
-             //TODO Error
                  setError(error.message)
             
 
@@ -109,9 +110,10 @@ function App() {
     }
 
     const onLogout =  async () => {
-        await authSevice.logout();
-
-        setAuth({})
+       
+            await authSevice.logout();
+            setAuth({})
+        
     }
     const onAdEditSubmit = async (values) => {
        const result =  await adsService.edit(values._id,values)
@@ -188,6 +190,10 @@ function App() {
                 </Routes>    
             </main>
             </AuthContext.Provider>
+            <footer>
+
+            <Footer />
+            </footer>
         </>
     )
 }

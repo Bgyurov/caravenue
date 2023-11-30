@@ -10,7 +10,16 @@ export const Search = () =>{
    async function searchFormSubmit(e){
         
         let searchWord = values.search
+        console.log(searchWord)
         let convertWord = searchWord.charAt(0).toUpperCase() + searchWord.slice(1);
+        if(searchWord == 'bmw' || searchWord == 'Bmw'){
+           
+            convertWord = 'BMW'
+        }
+        if(searchWord == 'Mercedes'  || searchWord == 'mercedes'){
+           
+            convertWord = 'Mercedes-Benz'
+        }
         if(convertWord == ''){
         const result = await adsService.getAll()
         setSearchAds(result)
