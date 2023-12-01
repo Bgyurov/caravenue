@@ -1,11 +1,10 @@
 import { useParams,Link } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
-import { useEffect, useState } from "react"
+import { useEffect, useState,useContext } from "react"
 import { currencyConverter,engineTypeConverter,transmitionConverter,yearConverter } from "../../services/convertor.js"
-
+import { useNavigate } from "react-router-dom"
 import { useService } from "../../hooks/useService"
 import { AuthContext } from "../../contexts/AuthContext"
-import { useContext } from "react"
 import './details.css'
 import { authServiceFactory } from "../../services/authService.tsx"
 import AdsContext from "../../contexts/AdsContext.jsx"
@@ -13,7 +12,7 @@ export const AdDetails = ({
   
 }) => {
     const {onDeleteAdSubmit} = useContext(AdsContext)
-
+    const navigate = useNavigate()
     const { userId,isAuthenticated } = useContext(AuthContext)
     const { adId } = useParams()
     const [ad, setAd] = useState({})
@@ -39,6 +38,7 @@ export const AdDetails = ({
 
     const onDelete = async () => {
         onDeleteAdSubmit(adId)
+        navigate('/catalog')
     }
 
     const isOwner = ad._ownerId === userId

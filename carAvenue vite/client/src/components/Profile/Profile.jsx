@@ -8,9 +8,12 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import { profileServiceFactory } from '../../services/profileService';
 import { useService } from '../../hooks/useService';
-import { useParams,Link } from 'react-router-dom';
+import { useParams,Link , useNavigate} from 'react-router-dom';
 import {currencyConverter} from '../../services/convertor.js'
+import AdsContext from '../../contexts/AdsContext.jsx';
 const Profile = () => {
+  const navigate = useNavigate()
+  const {onDeleteAdSubmit} = useContext(AdsContext)
   const { userEmail, userName } = useContext(AuthContext)
   const profileService = useService(profileServiceFactory)
   const { profileId } = useParams()
@@ -58,7 +61,12 @@ const Profile = () => {
 
   
 
- 
+  const onDelete = async (adId) => {
+    onDeleteAdSubmit(adId)
+    setAdsByUser(state => state.filter(ad => ad._id !== adId))
+
+    navigate(`/profile/${profileId}`)
+}
 
 
 
@@ -90,8 +98,8 @@ const Profile = () => {
               </ListItemAvatar>
               <ListItemText primary={`${ad.car} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
               <Stack direction="row" spacing={1}>
-   
-    <Link to={`/catalog/${ad._id}/edit`} className='button'>Edit</Link>
+      <Button onClick={() => onDelete(ad._id)} className='button'>Delete</Button>
+      <Link to={`/catalog/${ad._id}/edit`} className='button'>Edit</Link>
 
   </Stack>
             </ListItem>

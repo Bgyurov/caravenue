@@ -40,7 +40,7 @@ export const AdsProvider = ({
         await adsService.remove(adId)
         setAds(state => state.filter(ad => ad._id !== adId))
         setHeroAds(state => state.filter(ad => ad._id !== adId))
-        navigate('/catalog')
+        
         
     }
     const onAdEditSubmit = async (values) => {
