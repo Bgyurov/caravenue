@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useContext } from "react"
-import { AuthContext } from "../../contexts/AuthContext.tsx"
+import { AuthContext } from "../../contexts/AuthContext"
 import './navigation.css'
 
 export function Navigation(){

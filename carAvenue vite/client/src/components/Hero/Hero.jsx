@@ -7,7 +7,11 @@ import AdsContext from '../../contexts/AdsContext.jsx'
 export const Hero =({
     
 }) =>{
-    const {heroAds} = useContext(AdsContext)
+    let {heroAds} = useContext(AdsContext)
+    
+   if(heroAds.length > 3){
+        heroAds = heroAds.slice(-3)
+   }
     return ( 
     <section id="welcome-world">
 
@@ -22,8 +26,7 @@ export const Hero =({
     <div id="home-page">
         <h1>Latest Ad</h1>
 
-        {/*               <!-- Display div: with information about every game (if any) -->*/}
-           {/*               <!-- Display div: with information about every game (if any) -->*/}
+  
            {heroAds.map(x => 
     <HeroItem key={x._id} {...x} />
     )}

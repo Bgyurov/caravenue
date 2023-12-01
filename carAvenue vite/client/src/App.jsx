@@ -24,21 +24,16 @@ import ProfileGuard from './guards/ProfileGuard.jsx';
 import { AdsProvider } from './contexts/AdsContext.jsx';
 function App() {
     const navigate = useNavigate()
-  
     const [auth,setAuth] = usePersistedState('auth',{})
-    const [successMsg , setSuccessMsg] = useState(false)
+    const [successMsg , setSuccessMsg] = useState()
     const [error, setError] = useState()
-
     const authSevice = authServiceFactory(auth.accessToken)
 
-
-    
     const handleCloseMsg = () => {
         setSuccessMsg('');
         setError('')
       };
    
-
     const onLoginSubmit = async (data) => {
         try {
             const result = await authSevice.login(data)
@@ -63,10 +58,6 @@ function App() {
             setError('The password should be more than 5 symbols')
             return
         }
-        
-       
-             
-        
 
         try {
             const result = await authSevice.register(registerData)
@@ -77,8 +68,6 @@ function App() {
         } catch (error) {
                  setError(error.message)
             
-
-             
         }
     }
 
