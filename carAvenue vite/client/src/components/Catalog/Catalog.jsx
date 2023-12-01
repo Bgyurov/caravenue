@@ -1,6 +1,10 @@
 import { CatalogItem } from "./CatalogItem/CatalogItem.jsx"
 import '../Catalog/all-ads.css'
-export const Catalog = ({ads})=>{
+import { useContext } from "react"
+import AdsContext from "../../contexts/AdsContext.jsx"
+export const Catalog = ()=>{
+    const {ads} = useContext(AdsContext)
+    console.log(ads)
     return (
         <section id="catalog-page">
         <h1>All Offers</h1>

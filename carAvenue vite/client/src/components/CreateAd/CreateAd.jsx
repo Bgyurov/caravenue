@@ -1,9 +1,12 @@
 import { useForm } from "../../hooks/useForm"
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import './create-edit.css'
+import AdsContext from "../../contexts/AdsContext";
 export const CreateAd = ({
-    onCreateAdSubmit,
+   
 }) =>{
+    const {onCreateAdSubmit} = useContext(AdsContext)
+
     const [buttonForSecondPh, setButtonForSecondPh] = useState(true);
     const [isClickedForSecondPh, setIsClickedForSecondPh] = useState(false);
   

@@ -1,12 +1,15 @@
 import { useForm } from "../../hooks/useForm"
 import { useParams } from "react-router-dom"
-import { useEffect,useState } from "react"
+import { useEffect,useState,useContext } from "react"
 import { useService } from "../../hooks/useService"
 import { adsServiceFactory } from "../../services/adsService"
 import "./create-edit.css"
+import AdsContext from "../../contexts/AdsContext"
 export const EditAd = ({
-    onAdEditSubmit,
+    
 }) => {
+    const {onAdEditSubmit} = useContext(AdsContext)
+
     const {adId} = useParams()
     const adService = useService(adsServiceFactory)
     const [buttonForSecondPh, setButtonForSecondPh] = useState(true);

@@ -1,4 +1,4 @@
-import { AuthContext } from "../../contexts/AuthContext.tsx"
+import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import { useForm } from "../../hooks/useForm.tsx"
 import { Link } from "react-router-dom"

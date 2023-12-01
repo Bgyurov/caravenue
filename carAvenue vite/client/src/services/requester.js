@@ -28,9 +28,7 @@ const request = async (method, token, url, data) => {
     if (response.status === 204) {
         return {};
     }
-    if(response.status === 403){
-        throw Error("Login or password don't match")
-    }
+   
     
     if (response.status === 404) {
        

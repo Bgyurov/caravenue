@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import heroPhoto from '../../assets/sold-label-sign-concept-on-transparent-background-free-png.webp'
 import { HeroItem } from './HeroItem/HeroItem.jsx'
 import './welcome.css'
+import AdsContext from '../../contexts/AdsContext.jsx'
 
 export const Hero =({
-    heroAds,
+    
 }) =>{
-   
+    const {heroAds} = useContext(AdsContext)
     return ( 
     <section id="welcome-world">
 

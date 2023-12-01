@@ -8,9 +8,12 @@ import { AuthContext } from "../../contexts/AuthContext"
 import { useContext } from "react"
 import './details.css'
 import { authServiceFactory } from "../../services/authService.tsx"
+import AdsContext from "../../contexts/AdsContext.jsx"
 export const AdDetails = ({
-    onDeleteAdSubmit
+  
 }) => {
+    const {onDeleteAdSubmit} = useContext(AdsContext)
+
     const { userId,isAuthenticated } = useContext(AuthContext)
     const { adId } = useParams()
     const [ad, setAd] = useState({})

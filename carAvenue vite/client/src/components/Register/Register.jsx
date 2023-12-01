@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../../contexts/AuthContext.tsx"
+import { AuthContext } from "../../contexts/AuthContext"
 import { useForm } from "../../hooks/useForm.tsx"
 export const Register = ()=>{
 

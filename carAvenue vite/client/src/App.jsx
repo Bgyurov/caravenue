@@ -1,8 +1,7 @@
-import { useState,useEffect } from 'react'
-import { Routes, Route,useNavigate ,useParams} from 'react-router-dom'
+import { useState } from 'react'
+import { Routes, Route,useNavigate } from 'react-router-dom'
 import {AuthContext} from './contexts/AuthContext'
 import { Alert,Snackbar } from '@mui/material';
-import {adsServiceFactory} from './services/adsService'
 
 import {authServiceFactory} from './services/authService'
 import { Navigation } from './components/Navigation/Navigation'
@@ -22,50 +21,23 @@ import AuthGuard from './guards/AuthGuard.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import ProfileGuard from './guards/ProfileGuard.jsx';
+import { AdsProvider } from './contexts/AdsContext.jsx';
 function App() {
     const navigate = useNavigate()
-    const [ads, setAds] = useState([]);
-    const [heroAds , setHeroAds] = useState([])
+  
     const [auth,setAuth] = usePersistedState('auth',{})
     const [successMsg , setSuccessMsg] = useState(false)
     const [error, setError] = useState()
 
-    const adsService = adsServiceFactory(auth.accessToken)
     const authSevice = authServiceFactory(auth.accessToken)
-    useEffect(() => {
-        adsService.getAll()
-            .then(result => {
-                setAds(result)
-            })
-    }, []);
 
-    useEffect(() => {
-        adsService.getLastThree()
-            .then(result => {
-                setHeroAds(result)
-            })
-    }, []);
 
-    const onCreateAdSubmit = async (data) =>{
-        const newAd = await adsService.create(data)
-        //add ad to state
-        setAds(state=>[...state,newAd])
-        setHeroAds(state=>[...state,newAd])
-        //redirect page
-        setSuccessMsg('You succesfull add your ad . Good Luck!')
-        navigate('/catalog')
-    }
+    
     const handleCloseMsg = () => {
         setSuccessMsg('');
         setError('')
       };
-    const onDeleteAdSubmit = async (adId) => {
-        await adsService.remove(adId)
-        setAds(state => state.filter(ad => ad._id !== adId))
-        setHeroAds(state => state.filter(ad => ad._id !== adId))
-        navigate('/catalog')
-        
-    }
+   
 
     const onLoginSubmit = async (data) => {
         try {
@@ -116,11 +88,7 @@ function App() {
             setAuth({})
         
     }
-    const onAdEditSubmit = async (values) => {
-       const result =  await adsService.edit(values._id,values)
-       setAds(state=> state.map(x => x._id === values._id ? result : x))
-            navigate(`/catalog/${values._id}`)
-    }
+  
 
 
   
@@ -140,6 +108,7 @@ function App() {
     return (
         <>
     <AuthContext.Provider value={context}>
+            <AdsProvider>
 
    
          
@@ -174,22 +143,24 @@ function App() {
 
         
                 <Routes>
-                    <Route path='/' element={<Hero heroAds={heroAds}/>}/>
+                    <Route path='/' element={<Hero />}/>
                     <Route path='/login' element={<Login />}/>
                     <Route path='/logout' element={<Logout />}/>
                     
                     <Route path='/register' element={<Register/>}/>
-                    <Route path='/create-ad' element={<AuthGuard><CreateAd onCreateAdSubmit={onCreateAdSubmit}/></AuthGuard>}/>
-                    <Route path='/catalog' element={<Catalog ads={ads}/>}/>
+                    <Route path='/catalog' element={<Catalog />}/>
                     <Route path='/search' element={<Search/>}/>
-                    <Route path='/catalog/:adId' element={<AdDetails onDeleteAdSubmit={onDeleteAdSubmit} />} />
-                    <Route path='/catalog/:adId/edit' element={<AuthGuard><EditAd onAdEditSubmit={onAdEditSubmit} /></AuthGuard>} />
+
+                    <Route path='/create-ad' element={<AuthGuard><CreateAd /></AuthGuard>}/>
+                    <Route path='/catalog/:adId' element={<AdDetails  />} />
+                    <Route path='/catalog/:adId/edit' element={<AuthGuard><EditAd  /></AuthGuard>} />
                     <Route path='/profile/:profileId' element={<AuthGuard><ProfileGuard><Profile /></ProfileGuard></AuthGuard>}/>
 
                     <Route path="*" element={<NotFound />} />
 
                 </Routes>    
             </main>
+                    </AdsProvider>
             </AuthContext.Provider>
             <footer>
 
