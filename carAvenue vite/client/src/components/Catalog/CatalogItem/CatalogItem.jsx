@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { currencyConverter } from "../../../services/convertor"
+import SearchIcon from '@mui/icons-material/Search';
+import { Button } from "@mui/material";
 export const CatalogItem = ({
         car ,
         model,
@@ -10,6 +12,10 @@ export const CatalogItem = ({
         currency,
         _id
 }) => {
+    const navigate = useNavigate()
+    const onDetailClick = () => {
+        navigate(`/catalog/${_id}`)
+    }
 
     return (
         <div className="offer">
@@ -19,7 +25,7 @@ export const CatalogItem = ({
             <h2>{price} {currencyConverter(currency)}</h2>
             <h6>{milleage}km</h6>
 
-            <Link to={`/catalog/${_id}`} className="details-button">Details</Link>
+            <Button sx={{marginTop:8}} onClick={onDetailClick} variant="contained" startIcon={<SearchIcon />}>Details</Button>
         </div>
     </div>
     )

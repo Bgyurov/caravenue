@@ -8,6 +8,9 @@ import { AuthContext } from "../../contexts/AuthContext"
 import './details.css'
 import { authServiceFactory } from "../../services/authService.tsx"
 import AdsContext from "../../contexts/AdsContext.jsx"
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import {  Button} from '@mui/material';
 export const AdDetails = ({
   
 }) => {
@@ -40,7 +43,9 @@ export const AdDetails = ({
         onDeleteAdSubmit(adId)
         navigate('/catalog')
     }
-
+    const onEdit = async(adId) => {
+        navigate(`/catalog/${adId}/edit`)
+    }
     const isOwner = ad._ownerId === userId
     let photos = []
 
@@ -107,8 +112,9 @@ export const AdDetails = ({
                      <div className="buttons">
                 {isOwner && (
                     <>
-                       <Link to={`/catalog/${ad._id}/edit`} className="button">Edit</Link>
-                        <Link to={`/catalog`} onClick={onDelete} className="button">Delete</Link>
+                      <Button sx={{marginRight:1}} onClick={() => onEdit(ad._id)} variant="outlined" startIcon={<EditIcon />}>Edit</Button>
+
+                        <Button to={`/catalog`} onClick={onDelete} variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
                     </>
                         )}
 
