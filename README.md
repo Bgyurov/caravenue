@@ -2,7 +2,7 @@
 Car sales made for educational purpose, created with React as Front-End,as Back-End SoftUni Practice Server.
 
 <p align="center">
-  <img style="text-align: center" src="./client/public/screen1.png" width="550" title="project-image">
+  <img style="text-align: center" src="carAvenue vite/client/public/screen1.png" width="550" title="project-image">
 </p>
  
 ## General information
@@ -19,7 +19,7 @@ Car sales made for educational purpose, created with React as Front-End,as Back-
   * SoftUni practice server
  
 <p align="center">
-  <img style="text-align: center" src="./client/public/screen2.png" width="550" title="project-image">
+  <img style="text-align: center" src="carAvenue vite/client/public/screen2.png" width="550" title="project-image">
 </p>
 
 ## Setup
