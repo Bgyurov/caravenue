@@ -37,9 +37,10 @@ function App() {
     const onLoginSubmit = async (data) => {
         try {
             const result = await authSevice.login(data)
+            
             setAuth(result)
             navigate('/')
-            setSuccessMsg('Welcome again!')
+            setSuccessMsg(`Добре дошъл отново , ${result.username}!`)
         } catch (error) {
             //TODO Error
             setError(error.message)
@@ -50,12 +51,12 @@ function App() {
         const { confirmPass, ...registerData } = values
         if (confirmPass !== registerData.password) {
 
-            setError('Please ensure that the password and confirm password fields match')
+            setError('Моля, уверете се, че полетата за парола и за потвърждение на паролата съвпадат')
             return
         }
 
         if (registerData.password.length < 5) {
-            setError('The password should be more than 5 symbols')
+            setError('Паролата трябва да е повече от 5 символа')
             return
         }
 
