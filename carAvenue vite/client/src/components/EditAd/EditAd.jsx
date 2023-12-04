@@ -55,6 +55,7 @@ export const EditAd = ({
                 <select name="car" id="car" required  value={values.car} onChange={changeHandler} >
                    
                     <optgroup label="A">
+                        <option></option>
                         <option value="Acura">Acura</option>
                         <option value="Alfa Romeo">Alfa Romeo</option>
                         <option value="Alpina">Alpina</option>

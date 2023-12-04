@@ -54,8 +54,9 @@ export const CreateAd = ({
                 <h2>Best way to sell your car</h2>
 
                 <label htmlFor="car">Марка:</label>
-                <select name="car" id="car" required  value={values.car} onChange={changeHandler} >
+                <select name="car" id="car"   value={values.car} onChange={changeHandler} required >
                    
+                        <option ></option>
                     <optgroup label="A">
                         <option value="Acura">Acura</option>
                         <option value="Alfa Romeo">Alfa Romeo</option>
@@ -251,7 +252,7 @@ export const CreateAd = ({
                             <label htmlFor="etype">Евростандарт:</label>
                             <select name="ecategory" id="ecategory" value={values.ecategory}  onChange={changeHandler} required>
                                 
-
+                                <option></option>
                                 <option value="EURO 1">EURO 1</option>
                                 <option value="EURO 2">EURO 2</option>
                                 <option value="EURO 3">EURO 3</option>
