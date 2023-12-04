@@ -99,7 +99,7 @@ function App() {
                     <main id='main-content'>
                         {successMsg && (
                             <Snackbar
-                                open={successMsg}
+                                open={Boolean(successMsg)}
                                 autoHideDuration={6000}
                                 onClose={handleCloseMsg}
                             >
@@ -112,9 +112,10 @@ function App() {
                         )}
                         {error && (
                             <Snackbar
-                                open={error}
-                                autoHideDuration={4500}
-                                onClose={handleCloseMsg}>
+                                open={Boolean(error)}
+                                autoHideDuration={6000}
+                                onClose={handleCloseMsg}
+                                >
 
                                 <Alert onClose={handleCloseMsg} severity="error">
                                     {error}
