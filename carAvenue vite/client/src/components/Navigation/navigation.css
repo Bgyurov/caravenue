@@ -15,6 +15,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  cursor: pointer;
 }
 .topnav  h1 {
   float: left;
@@ -33,10 +34,13 @@ body {
 
 .topnav nav a:hover{
   color: #e38251;
-  cursor: pointer;
-  text-shadow: #FC0 0 1px;
-  
+  text-shadow: rgba(255, 204, 0, 0.623) 0 1px;  
+  text-decoration: underline;
+  transition: 0.3s;
+
 }
+
+
 
 
 h1 {

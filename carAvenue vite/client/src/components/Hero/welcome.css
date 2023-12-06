@@ -27,8 +27,9 @@
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: uppercase;
-    text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.922);
     font-family: cursive;
+    
 }
 
 .welcome-message h3 {
@@ -41,7 +42,8 @@
     word-spacing: normal;
     text-transform: uppercase;
     font-weight: 700;
-    text-shadow: 0 2px 4.8px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4.8px rgb(0, 0, 0);
+
     font-family: cursive;
 }
 
@@ -52,7 +54,7 @@
 }
 
 #home-page {
-    background-color: #252525d1;
+    background-color: #6c6464d1;
     box-shadow: 0px 0px 40px 0px;
     overflow: hidden;
     border-radius: 10px;
@@ -73,7 +75,24 @@
     border-radius: 15px;
     float: left;
     height: auto;
-    color: rgb(204, 144, 131);
+    color: rgb(238, 143, 121);
+}
+.ad {
+    box-shadow: 0px 0px 30px 0px;
+    margin-top: 20px;
+    padding: 50px;
+    margin-left: 50px;
+    background-position: right 35% bottom 45%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    float: left;
+    height: auto;
+    transition: 0.5s;
+    color: rgb(238, 143, 121);
+}
+.ad:hover{
+    color: rgb(236, 98, 67);
+    transition: 0.5s;
 }
 
 .wrapper-img {
@@ -141,6 +160,7 @@
 
 #home-page>h1 {
     color: #ffffff;
+    
     text-align: center;
     font-weight: 700;
     font-size: 84px;
