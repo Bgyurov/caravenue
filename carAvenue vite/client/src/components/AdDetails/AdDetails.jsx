@@ -1,4 +1,4 @@
-import { useParams,Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { adsServiceFactory } from '../../services/adsService'
 import { useEffect, useState,useContext } from "react"
 import { currencyConverter,engineTypeConverter,transmitionConverter,yearConverter } from "../../services/convertor.js"
@@ -54,12 +54,10 @@ export const AdDetails = ({
         photos.push(ad.imageUrl2)
     }
     useEffect(() => {
-      // Set up an interval to change the photo every 3 seconds (adjust as needed)
       const intervalId = setInterval(() => {
         setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
       }, 5000);
   
-      // Clear the interval when the component unmounts
       return () => clearInterval(intervalId);
     }, [photos]);
    

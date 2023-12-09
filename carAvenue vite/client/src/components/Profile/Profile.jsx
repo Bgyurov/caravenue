@@ -44,14 +44,17 @@ const Profile = () => {
     width: '100px',
     height: '100px',
     margin: '10px auto',
+    backgroundColor: '#bbb'
   };
+
+
   const userStyle = {
     textAlign: 'center',
 
   };
   const listItemStyle = {
     border: '2px solid #000000',
-    borderRadius: '8px',
+    
     marginBottom: '10px',
     padding: '10px',
     backgroundColor: '#f9f9f9',
@@ -102,7 +105,7 @@ const Profile = () => {
                 <ListItemAvatar className={avatar}>
                   <Avatar alt={ad.car} src={ad.imageUrl} />
                 </ListItemAvatar>
-                <ListItemText  primary={`${ad.car} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
+                <ListItemText  primary={`${ad.car} ${ad.model} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
                 <Stack direction="row" spacing={1}>
                   <Button onClick={() => onDelete(ad._id)} variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
                   <Button onClick={() => onEdit(ad._id)} variant="outlined" startIcon={<EditIcon />}>Edit</Button>
