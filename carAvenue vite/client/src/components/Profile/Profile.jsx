@@ -44,14 +44,17 @@ const Profile = () => {
     width: '100px',
     height: '100px',
     margin: '10px auto',
+    backgroundColor: '#bbb'
   };
+
+
   const userStyle = {
     textAlign: 'center',
 
   };
   const listItemStyle = {
     border: '2px solid #000000',
-    borderRadius: '8px',
+    
     marginBottom: '10px',
     padding: '10px',
     backgroundColor: '#f9f9f9',
