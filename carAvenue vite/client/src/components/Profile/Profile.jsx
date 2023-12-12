@@ -102,7 +102,7 @@ const Profile = () => {
                 <ListItemAvatar className={avatar}>
                   <Avatar alt={ad.car} src={ad.imageUrl} />
                 </ListItemAvatar>
-                <ListItemText  primary={`${ad.car} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
+                <ListItemText  primary={`${ad.car} ${ad.model} ${ad.modification}`} secondary={`${ad.price} ${currencyConverter(ad.currency)}`} />
                 <Stack direction="row" spacing={1}>
                   <Button onClick={() => onDelete(ad._id)} variant="outlined" startIcon={<DeleteIcon />}>Delete</Button>
                   <Button onClick={() => onEdit(ad._id)} variant="outlined" startIcon={<EditIcon />}>Edit</Button>
